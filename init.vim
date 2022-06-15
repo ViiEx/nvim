@@ -9,12 +9,14 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Started Migration to build
+" in lsp
+Plug 'neovim/nvim-lspconfig'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'morhetz/gruvbox'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'liuchengxu/vim-which-key'
@@ -36,7 +38,8 @@ call plug#end()
 " Section: Global Settings                         "
 " ================================================ "
 
-set relativenumber
+set number relativenumber
+set nu rnu
 set smarttab
 set cindent
 set tabstop=2
@@ -97,20 +100,22 @@ let g:which_key_centered = 0
 
 let g:blamer_enabled = 1
 
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ 'coc-css'
-  \ ]
+lua require('config')
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+"let g:coc_global_extensions = [
+"  \ 'coc-snippets',
+"  \ 'coc-pairs',
+"  \ 'coc-tsserver',
+"  \ 'coc-eslint', 
+"  \ 'coc-prettier', 
+"  \ 'coc-json', 
+"  \ 'coc-css'
+"  \ ]
+
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"command! -nargs=0 Format :call CocAction('format')
+"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+"command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 call which_key#register('<Space>', "g:which_key_map")
 
@@ -123,13 +128,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
+function! Floating_Diagnostic() abort
+  execute :lua vim.diagnostic.open_float()
 endfunction
+
+"function! ShowDocumentation()
+"  if CocAction('hasProvider', 'hover')
+"    call CocActionAsync('doHover')
+"  else
+"    call feedkeys('K', 'in')
+"  endif
+"endfunction
 
 " ================================================ "
 " Section: Mappings                                "
@@ -142,6 +151,12 @@ let g:which_key_map['g'] = {
       \ 'g' : ['LazyGit', 'LazyGit'],
       \ }
 
+let g:which_key_map['b'] = {
+      \ 'name' : '+Tabs',
+      \ 'n' : ['bn', 'Next Tab'],
+      \ 'p' : ['bp', 'Preview Tab']
+      \}
+
 inoremap jk <ESC>
 :tnoremap <Esc> <C-\><C-n>
 nmap <C-s> :w<CR>
@@ -150,68 +165,73 @@ nmap <C-n> :NeoTreeShowToggle<CR>
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent> K :call ShowDocumentation()<CR>
+"nnoremap <silent> K :call ShowDocumentation()<CR>
+nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>
+nmap <silent> [g :lua vim.diagnostic.goto_prev()<CR>
+nmap <silent> ]g :lua vim.diagnostic.goto_next()<CR>
 
-nmap <F2> <Plug>(coc-rename)
+"nmap <F2> <Plug>(coc-rename)
 
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
+"nmap <leader>ac  <Plug>(coc-codeaction)
+"nmap <leader>qf  <Plug>(coc-fix-current)
 
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+"xmap if <Plug>(coc-funcobj-i)
+"xmap af <Plug>(coc-funcobj-a)
+"omap if <Plug>(coc-funcobj-i)
+"omap af <Plug>(coc-funcobj-a)
 
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+"nmap <silent> <C-d> <Plug>(coc-range-select)
+"xmap <silent> <C-d> <Plug>(coc-range-select)
 
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 nnoremap <silent><C-Right> :<C-u>wincmd l<CR>
 nnoremap <silent><C-Left>  :<C-u>wincmd h<CR>
 nnoremap <silent><C-Up>    :<C-u>wincmd k<CR>
 nnoremap <silent><C-Down>  :<C-u>wincmd j<CR>
 
+nmap <C-Tab> :bn<CR>
+
 " ================================================ "
 " Section: AutoCmds                                "
 " ================================================ "
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+"augroup mygroup
+"  autocmd!
+" Setup formatexpr specified filetype(s).
+"  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"  " Update signature help on jump placeholder
+"  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+"augroup end
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')

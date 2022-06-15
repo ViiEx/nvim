@@ -11,5 +11,47 @@
     "html",
     "css",
     "scss"
-  ]
+  ],
+  "languageserver": {
+    "tailwind-lsp": {
+      "command": "tailwindcss-language-server",
+      "args": ["--stdio"],
+
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "css",
+        "scss"
+      ],
+
+      "rootPatterns": [
+        "tailwind.config.js",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        "postcss.config.ts",
+        "package.json",
+        "node_modules",
+        ".git"
+      ],
+      "settings": {
+        "tailwindCSS": {
+          "validate": true,
+          "lint": {
+            "cssConflict": "warning",
+            "invalidApply": "error",
+            "invalidScreen": "error",
+            "invalidVariant": "error",
+            "invalidConfigPath": "error",
+            "invalidTailwindDirective": "error",
+            "recommendedVariantOrder": "warning"
+          },
+          "classAttributes": ["class", "className", "classList", "ngClass"],
+          "experimental": {}
+        }
+      }
+    }
+  }
 }
