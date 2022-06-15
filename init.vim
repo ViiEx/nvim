@@ -28,6 +28,7 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
 Plug 'mhinz/vim-startify'
 Plug 'APZelos/blamer.nvim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -46,19 +47,40 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 colorscheme gruvbox
 
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.colnr = ' :'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ' :'
+let g:airline_symbols.maxlinenr = '☰ '
+let g:airline_symbols.dirty='⚡'
+
+let g:airline#extensions#tabline#left_sep = ""
+let g:airline#extensions#tabline#right_sep = ""
+
+
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ctrlp#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#xkblayout#enabled = 1
 
-" unicode symbols
-let g:airline_symbols = {}
-let g:airline_symbols.crypt = '🔒'
-
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-
+let g:airline#extensions#tabline#formatter = 'default'  " f/p/file-name.js
+let g:airline#extensions#tabline#formatter = 'jsformatter' " path-to/f
+let g:airline#extensions#tabline#formatter = 'unique_tail' " file-name.js
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " f/p/file-name.js
 
 let g:mapleader = "\<Space>"
 
