@@ -15,6 +15,7 @@ set signcolumn=yes
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=99
 
 colorscheme gruvbox
 
