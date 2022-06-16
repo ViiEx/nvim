@@ -66,50 +66,55 @@ if cmp_status_ok and snip_status_ok then
 				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 			},
 		},
-		mapping = {
-			["<Up>"] = cmp.mapping.select_prev_item(),
-			["<Down>"] = cmp.mapping.select_next_item(),
-			["<C-p>"] = cmp.mapping.select_prev_item(),
-			["<C-n>"] = cmp.mapping.select_next_item(),
-			["<C-k>"] = cmp.mapping.select_prev_item(),
-			["<C-j>"] = cmp.mapping.select_next_item(),
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<C-y>"] = cmp.config.disable,
-			["<C-e>"] = cmp.mapping({
-				i = cmp.mapping.abort(),
-				c = cmp.mapping.close(),
-			}),
-			["<CR>"] = cmp.mapping.confirm({ select = false }),
-			["<Tab>"] = cmp.mapping(function(fallback)
+		mapping = cmp.mapping.preset.insert({
+			["<Tab>"] = function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
-				elseif luasnip.expandable() then
-					luasnip.expand()
-				elseif luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				elseif has_words_before() then
-					cmp.complete()
 				else
 					fallback()
 				end
-			end, {
-				"i",
-				"s",
-			}),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
+			end,
+			["<S-Tab>"] = function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
-					luasnip.jump(-1)
 				else
 					fallback()
 				end
-			end, {
-				"i",
-				"s",
-			}),
+			end,
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<C-e>"] = cmp.mapping.abort(),
+			["<Esc>"] = cmp.mapping.close(),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+		}),
+		sources = {
+			{ name = "nvim_lsp" }, -- For nvim-lsp
+			{ name = "ultisnips" }, -- For ultisnips user.
+			{ name = "nvim_lua" }, -- for nvim lua function
+			{ name = "path" }, -- for path completion
+			{ name = "buffer", keyword_length = 4 }, -- for buffer word completion
+			{ name = "omni" },
+			{ name = "emoji", insert = true }, -- emoji completion
 		},
 	})
 end
+
+vim.cmd([[
+  highlight! link CmpItemMenu Comment
+  " gray
+  highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+  " blue
+  highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+  highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+  " light blue
+  highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+  highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
+  highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
+  " pink
+  highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+  highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+  " front
+  highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+  highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
+  highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
+]])

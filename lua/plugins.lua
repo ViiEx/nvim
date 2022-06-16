@@ -176,6 +176,11 @@ require("packer").startup({
 			"hrsh7th/cmp-nvim-lsp",
 			after = "nvim-cmp",
 		})
+		use({ "hrsh7th/cmp-omni", after = "nvim-cmp" })
+		use({ "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } })
+		use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
+		use({ "SirVer/ultisnips", event = "InsertEnter" })
+		use({ "honza/vim-snippets", after = "ultisnips" })
 		use({
 			"stevearc/aerial.nvim",
 			module = "aerial",
