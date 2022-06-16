@@ -60,3 +60,6 @@ let g:Lf_PopupColorscheme = 'gruvbox_material'
 let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
 
 nmap ga <Plug>(UnicodeGA)
+
+nmap s <Nop>
+omap s <Nop>

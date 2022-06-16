@@ -11,7 +11,7 @@ set cindent
 set expandtab
 set hidden
 set updatetime=300
-set signcolumn=yes
+set signcolumn=auto:2
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
@@ -40,7 +40,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set linebreak
 set showbreak=↪
 
-set wildmode=list:longest
+" set wildmode=list:longest
 
 set scrolloff=3
 
@@ -82,6 +82,14 @@ set spellsuggest+=9
 set formatoptions+=mM
 
 set tildeop
+
+" diff options
+set diffopt=
+set diffopt+=vertical  " show diff in vertical position
+set diffopt+=filler  " show filler for deleted lines
+set diffopt+=closeoff  " turn off diff when one file window is closed
+set diffopt+=context:3  " context for diff
+set diffopt+=internal,indent-heuristic,algorithm:histogram
 
 
 if executable('rg')

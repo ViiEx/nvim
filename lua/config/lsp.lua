@@ -77,52 +77,6 @@ end
 
 local lspconfig = require("lspconfig")
 
-if utils.executable('pylsp') then
-  lspconfig.pylsp.setup({
-    on_attach = custom_attach,
-    settings = {
-      pylsp = {
-        plugins = {
-          pylint = { enabled = true, executable = "pylint" },
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          jedi_completion = { fuzzy = true },
-          pyls_isort = { enabled = true },
-          pylsp_mypy = { enabled = true },
-        },
-      },
-    },
-    flags = {
-      debounce_text_changes = 200,
-    },
-    capabilities = capabilities,
-  })
-else
-  vim.notify("pylsp not found!", 'warn', {title = 'Nvim-config'})
-end
-
--- if utils.executable('pyright') then
---   lspconfig.pyright.setup{
---     on_attach = custom_attach,
---     capabilities = capabilities
---   }
--- else
---   vim.notify("pyright not found!", 'warn', {title = 'Nvim-config'})
--- end
-
-if utils.executable('clangd') then
-  lspconfig.clangd.setup({
-    on_attach = custom_attach,
-    capabilities = capabilities,
-    filetypes = { "c", "cpp", "cc" },
-    flags = {
-      debounce_text_changes = 500,
-    },
-  })
-else
-  vim.notify("clangd not found!", 'warn', {title = 'Nvim-config'})
-end
-
 -- set up vim-language-server
 if utils.executable('vim-language-server') then
   lspconfig.vimls.setup({
