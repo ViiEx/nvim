@@ -97,6 +97,9 @@ require("packer").startup({
     }
     use {'jdhao/whitespace.nvim', event = 'VimEnter'}
     use { 'jose-elias-alvarez/null-ls.nvim', config = [[require('config.null-ls')]] }
+    use {
+      "akinsho/toggleterm.nvim", tag = 'v1.*', config = [[require('config.toggleterm')]]
+    }
 
     if packer_bootstrap then
       require('packer').sync()
