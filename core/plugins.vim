@@ -63,3 +63,14 @@ nmap ga <Plug>(UnicodeGA)
 
 nmap s <Nop>
 omap s <Nop>
+
+let g:AutoPairsFlyMode = 1
+
+" add file extensions
+let g:closetag_filenames = '*.html,*.tsx,*.jsx'
+
+" make sure it only works for the JSX region
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }

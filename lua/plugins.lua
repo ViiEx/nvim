@@ -192,6 +192,10 @@ require("packer").startup({
 			end,
 		})
 		use({ "machakann/vim-sandwich", event = "VimEnter" })
+		use({ "jiangmiao/auto-pairs" })
+		use({ "alvan/vim-closetag" })
+		use({ "andymass/vim-matchup", event = "VimEnter" })
+		use({ "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] })
 
 		if packer_bootstrap then
 			require("packer").sync()
