@@ -1,9 +1,6 @@
 " ================================================ "
 " Section: Mappings                                "
 " ================================================ "
-
-nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
-
 inoremap jk <ESC>
 :tnoremap <Esc> <C-\><C-n>
 nmap <C-s> :w<CR>
