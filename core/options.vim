@@ -44,7 +44,7 @@ set wildmode=list:longest
 
 set scrolloff=3
 
-set mouse=nic
+set mouse=a
 set mousemodel=popup
 
 set noshowmode
