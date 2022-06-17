@@ -41,22 +41,16 @@ if status_ok then
 			whitespace = "  ",
 		},
 		on_attach = function(bufnr)
-			-- Jump forwards/backwards with '{' and '}'
-			vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr, desc = "Jump backwards in Aerial" })
-			vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr, desc = "Jump forwards in Aerial" })
-			-- Jump up the tree with '[[' or ']]'
-			vim.keymap.set(
-				"n",
-				"[[",
-				"<cmd>AerialPrevUp<cr>",
-				{ buffer = bufnr, desc = "Jump up and backwards in Aerial" }
-			)
-			vim.keymap.set(
-				"n",
-				"]]",
-				"<cmd>AerialNextUp<cr>",
-				{ buffer = bufnr, desc = "Jump up and forwards in Aerial" }
-			)
+			-- Toggle aerial window
+			vim.keymap.set("n", "\\s", "<Cmd>AerialToggle!<CR>", map_opts)
+			-- Focus aerial window
+			vim.keymap.set("n", "<Leader>ss", "<Cmd>AerialOpen<CR>", map_opts)
+			-- Jump forwards/backwards
+			vim.keymap.set("n", "[s", "<cmd>AerialPrev<CR>", map_opts)
+			vim.keymap.set("n", "]s", "<cmd>AerialNext<CR>", map_opts)
+			-- Jump up the tree
+			vim.keymap.set("n", "[S", "<cmd>AerialPrevUp<CR>", map_opts)
+			vim.keymap.set("n", "]S", "<cmd>AerialNextUp<CR>", map_opts)
 		end,
 	})
 end

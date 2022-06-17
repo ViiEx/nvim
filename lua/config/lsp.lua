@@ -5,6 +5,7 @@ local lsp = vim.lsp
 local utils = require("utils")
 
 local custom_attach = function(client, bufnr)
+  require("aerial").on_attach(client, bufnr)
   -- Mappings.
   local opts = { silent = true, buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

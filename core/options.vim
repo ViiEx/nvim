@@ -74,7 +74,7 @@ set winblend=5
 
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
 
-set spelllang=en,gr
+set spelllang=en
 set spellsuggest+=9
 
 set formatoptions+=mM
