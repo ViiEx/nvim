@@ -20,26 +20,67 @@ local util = require("packer.util")
 require("packer").startup({
 	function(use)
 		use({ "wbthomason/packer.nvim", opt = true })
+		-- Lsp and coding stuff
+		use({ "williamboman/nvim-lsp-installer" })
 		use({
-			"williamboman/nvim-lsp-installer",
+			"neovim/nvim-lspconfig",
+			after = "nvim-lsp-installer",
+			module = "lspconfig",
 			config = function()
-				require("nvim-lsp-installer").setup({
-					ensure_installed = { "tailwindcss", "tsserver", "sumneko_lua" },
-					automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-					ui = {
-						icons = {
-							server_installed = "✓",
-							server_pending = "➜",
-							server_uninstalled = "✗",
-						},
-					},
-				})
+				require("config.lsp_installer")
+				require("config.lspconfig")
 			end,
 		})
 		use({
-			"neovim/nvim-lspconfig",
-			config = [[require('config.lsp')]],
+			"rafamadriz/friendly-snippets",
+			module = "cmp_nvim_lsp",
+			event = "InsertEnter",
 		})
+		use({
+			"hrsh7th/nvim-cmp",
+			after = "friendly-snippets",
+			config = function()
+				require("config.cmp")
+			end,
+		})
+		use({
+			"L3MON4D3/LuaSnip",
+			wants = "friendly-snippets",
+			after = "nvim-cmp",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load()
+			end,
+		})
+		use({
+			"saadparwaiz1/cmp_luasnip",
+			after = "LuaSnip",
+		})
+		use({
+			"hrsh7th/cmp-nvim-lua",
+			after = "cmp_luasnip",
+		})
+		use({
+			"hrsh7th/cmp-nvim-lsp",
+			after = "cmp-nvim-lua",
+		})
+		use({
+			"hrsh7th/cmp-buffer",
+			after = "cmp-nvim-lsp",
+		})
+		use({
+			"hrsh7th/cmp-path",
+			after = "cmp-buffer",
+		})
+
+		use({
+			"stevearc/aerial.nvim",
+			module = "aerial",
+			cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
+			config = function()
+				require("config.aerial")
+			end,
+		})
+
 		use({ "ctrlpvim/ctrlp.vim" })
 		use({ "preservim/nerdcommenter" })
 		use({ "morhetz/gruvbox" })
@@ -141,54 +182,11 @@ require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			event = { "BufRead", "BufNewFile" },
 			config = [[require('config.null-ls')]],
+			requires = { "nvim-lua/plenary.nvim" },
 		})
 		use({ "akinsho/toggleterm.nvim", tag = "v1.*", config = [[require('config.toggleterm')]] })
 		use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
-		use({ "rafamadriz/friendly-snippets", opt = true })
-		use({
-			"L3MON4D3/LuaSnip",
-			module = "luasnip",
-			wants = "friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
-		})
-		use({
-			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
-			config = function()
-				require("config.cmp")
-			end,
-		})
-		use({
-			"saadparwaiz1/cmp_luasnip",
-			after = "nvim-cmp",
-		})
-		use({
-			"hrsh7th/cmp-buffer",
-			after = "nvim-cmp",
-		})
-		use({
-			"hrsh7th/cmp-path",
-			after = "nvim-cmp",
-		})
-		use({
-			"hrsh7th/cmp-nvim-lsp",
-			after = "nvim-cmp",
-		})
-		use({ "hrsh7th/cmp-omni", after = "nvim-cmp" })
-		use({ "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } })
-		use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
-		use({ "SirVer/ultisnips", event = "InsertEnter" })
-		use({ "honza/vim-snippets", after = "ultisnips" })
-		use({
-			"stevearc/aerial.nvim",
-			module = "aerial",
-			cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
-			config = function()
-				require("config.aerial")
-			end,
-		})
+
 		use({
 			"norcalli/nvim-colorizer.lua",
 			event = { "BufRead", "BufNewFile" },
