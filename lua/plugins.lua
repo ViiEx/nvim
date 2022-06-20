@@ -128,10 +128,28 @@ require("packer").startup({
 		})
 		use({ "haya14busa/vim-asterisk", event = "VimEnter" })
 		use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
+		use({ "nvim-lua/popup.nvim" })
 		use({
 			"nvim-telescope/telescope.nvim",
 			cmd = "Telescope",
-			requires = { { "nvim-lua/plenary.nvim" } },
+			requires = {
+				{ "nvim-lua/plenary.nvim" },
+				{
+					"nvim-telescope/telescope-node-modules.nvim",
+				},
+				{ "nvim-telescope/telescope-media-files.nvim" },
+				{ "nvim-telescope/telescope-project.nvim" },
+			},
+			config = function()
+				require("config.telescope")
+			end,
+		})
+		use({
+			"AckslD/nvim-neoclip.lua",
+			require = { { "nvim-telescope/telescope.nvim" } },
+			config = function()
+				require("neoclip").setup()
+			end,
 		})
 		use({ "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" })
 		use({ "mhinz/vim-signify", event = "BufEnter" })
@@ -199,6 +217,7 @@ require("packer").startup({
 		use({ "alvan/vim-closetag" })
 		use({ "andymass/vim-matchup", event = "VimEnter" })
 		use({ "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] })
+		use({ "airblade/vim-rooter" })
 
 		if packer_bootstrap then
 			require("packer").sync()

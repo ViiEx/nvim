@@ -3,8 +3,8 @@
 " ================================================ "
 inoremap jk <ESC>
 :tnoremap <Esc> <C-\><C-n>
-nmap <C-s> :w<CR>
-nmap <C-n> :NeoTreeShowToggle<CR>
+nmap <silent><C-s> :w<CR>
+nmap <silent><C-n> :Neotree toggle<CR>
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -23,6 +23,10 @@ nnoremap <silent><C-Up>    :<C-u>wincmd k<CR>
 nnoremap <silent><C-Down>  :<C-u>wincmd j<CR>
 
 nmap <silent><space>gg :LazyGit<CR>
+nmap <silent><space>fc :find ~/.config/nvim/init.vim<CR> :cd `pwd`<CR>
+nnoremap <silent><space>fp :lua require'telescope'.extensions.project.project{}<CR>
+nnoremap <silent><space>fm :lua require('telescope').extensions.media_files.media_files()<CR>
+nnoremap <silent><space>fn :Telescope node_modules list<CR>
 
 nmap <C-Tab> :bn<CR>
 
