@@ -22,6 +22,8 @@ require("packer").startup({
 		use({ "wbthomason/packer.nvim", opt = true })
 		-- Lsp and coding stuff
 		use({ "williamboman/nvim-lsp-installer" })
+		use({ "onsails/lspkind-nvim" })
+		use({ "nvim-lua/lsp-status.nvim" })
 		use({
 			"neovim/nvim-lspconfig",
 			after = "nvim-lsp-installer",
@@ -97,6 +99,7 @@ require("packer").startup({
 			},
 			config = [[require('config.neo-tree')]],
 		})
+		use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 		use({ "kdheepak/lazygit.nvim" })
 		use({
 			"goolord/alpha-nvim",
