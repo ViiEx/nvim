@@ -28,5 +28,8 @@ nnoremap <silent><space>fp :lua require'telescope'.extensions.project.project{}<
 nnoremap <silent><space>fm :lua require('telescope').extensions.media_files.media_files()<CR>
 nnoremap <silent><space>fn :Telescope node_modules list<CR>
 
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+
 nmap <C-Tab> :bn<CR>
 

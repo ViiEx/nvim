@@ -71,3 +71,15 @@ wk.register({
 		n = "Node Modules",
 	},
 }, { prefix = "<space>" })
+
+wk.register({
+	f = {
+		name = "+LeaderF",
+		f = "File",
+		b = "Buffer",
+		g = "Rg",
+		h = "Help",
+		r = "Mru",
+		t = "Tags",
+	},
+}, { prefix = "<leader>" })
