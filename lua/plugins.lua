@@ -85,7 +85,8 @@ require("packer").startup({
 
 		use({ "ctrlpvim/ctrlp.vim" })
 		use({ "preservim/nerdcommenter" })
-		use({ "morhetz/gruvbox" })
+		-- use({ "morhetz/gruvbox" })
+		use({ "sainnhe/everforest" })
 		use({ "nvim-lua/plenary.nvim" })
 		use({ "kyazdani42/nvim-web-devicons" })
 		use({ "MunifTanjim/nui.nvim" })
@@ -134,7 +135,6 @@ require("packer").startup({
 		use({ "nvim-lua/popup.nvim" })
 		use({
 			"nvim-telescope/telescope.nvim",
-			cmd = "Telescope",
 			requires = {
 				{ "nvim-lua/plenary.nvim" },
 				{
@@ -229,6 +229,9 @@ require("packer").startup({
 	config = {
 		max_jobs = 16,
 		compile_path = util.join_paths(fn.stdpath("data"), "site", "lua", "packer_compiled.lua"),
+		display = {
+			open_fn = require("packer.util").float,
+		},
 	},
 })
 
