@@ -25,7 +25,12 @@ packer.startup({ function(use)
   use("L3MON4D3/LuaSnip")
   use("saadparwaiz1/cmp_luasnip")
   -- Formatting
-  use("jose-elias-alvarez/null-ls.nvim")
+  use({
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function ()
+            require("plugins.config.null-ls")
+        end
+    })
   -- Language server
   use({
     "neovim/nvim-lspconfig",
