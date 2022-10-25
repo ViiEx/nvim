@@ -1,11 +1,7 @@
 ---------------------------------
 -- Plugins
 ---------------------------------
-local packer_ok, packer = pcall(require, "packer")
-
-if not packer_ok then
-	return
-end
+local packer = require("packer")
 
 local packer_bootstrap = require("bootstrap.packer")
 

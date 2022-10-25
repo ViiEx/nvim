@@ -73,6 +73,7 @@ M.general = {
 			desc = "ToggleTerm lazygit",
 		},
 		["<C-`>"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
+		["<leader>t"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
 
 		["<a-cr>"] = { "<cmd>lua require'lspactions'.code_action()<cr>", "Code Action", opts = { silent = true } },
 		["<leader>lr"] = { "<cmd>lua require'lspactions'.rename()<cr>", "Rename", opts = { silent = true } },
