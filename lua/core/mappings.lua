@@ -74,7 +74,8 @@ M.general = {
 		},
 		["<C-`>"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
 
-		["<a-cr>"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", opts = { silent = true } },
+		["<a-cr>"] = { "<cmd>lua require'lspactions'.code_action()<cr>", "Code Action", opts = { silent = true } },
+		["<leader>lr"] = { "<cmd>lua require'lspactions'.rename()<cr>", "Rename", opts = { silent = true } },
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
