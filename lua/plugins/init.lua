@@ -93,17 +93,17 @@ packer.startup({
 				require("plugins.config.toggleterm")
 			end,
 		})
-		use({
-			"folke/noice.nvim",
-			event = "VimEnter",
-			config = function()
-				require("plugins.config.noice")
-			end,
-			requires = {
-				"MunifTanjim/nui.nvim",
-				"rcarriga/nvim-notify",
-			},
-		})
+		-- use({
+		-- 	"folke/noice.nvim",
+		-- 	event = "VimEnter",
+		-- 	config = function()
+		-- 		require("plugins.config.noice")
+		-- 	end,
+		-- 	requires = {
+		-- 		"MunifTanjim/nui.nvim",
+		-- 		"rcarriga/nvim-notify",
+		-- 	},
+		-- })
 
 		-- Dependencies
 		use("nvim-lua/plenary.nvim")
