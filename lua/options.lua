@@ -28,5 +28,3 @@ set.wrap = true
 vim.o.updatetime = 250
 
 vim.g.mapleader = " "
-
-vim.g.mellow_bold_functions = true

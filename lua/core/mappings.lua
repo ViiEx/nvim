@@ -50,7 +50,7 @@ M.general = {
 
 		["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Open File tree", opts = { silent = true } },
 
-		["<leader>f"] = {
+		["<leader>ff"] = {
 			":lua require('telescope.builtin').find_files()<CR>",
 			"Open telescope",
 			opts = { silent = true },
