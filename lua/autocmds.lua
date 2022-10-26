@@ -3,7 +3,6 @@
 --   syntax on
 --   colorscheme sobrio
 -- ]])
-
 vim.cmd([[colorscheme mellow]])
 
 vim.cmd(
