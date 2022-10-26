@@ -77,6 +77,12 @@ M.general = {
 
 		["<a-cr>"] = { "<cmd>lua require'lspactions'.code_action()<cr>", "Code Action", opts = { silent = true } },
 		["<leader>lr"] = { "<cmd>lua require'lspactions'.rename()<cr>", "Rename", opts = { silent = true } },
+
+		["<leader>lf"] = {
+			"<cmd>lua vim.diagnostic.open_float()<cr>",
+			desc = "Open floating diagnostics",
+			opt = { silent = true },
+		},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
