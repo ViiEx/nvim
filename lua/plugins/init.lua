@@ -123,6 +123,7 @@ packer.startup({
 		})
 		-- Color scheme
 		use("elvessousa/sobrio")
+		use("kvrohit/mellow.nvim")
 
 		if packer_bootstrap then
 			packer.sync()
