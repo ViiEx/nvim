@@ -25,4 +25,6 @@ set.updatetime = 250
 set.wildmenu = true
 set.wrap = true
 
+vim.o.updatetime = 250
+
 vim.g.mapleader = " "
