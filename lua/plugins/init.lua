@@ -24,8 +24,18 @@ packer.startup({
 			end,
 		})
 		-- Motor de snippets
-		use("L3MON4D3/LuaSnip")
+		use({
+			"L3MON4D3/LuaSnip",
+			config = function()
+				require("plugins.config.luasnip")
+			end,
+		})
 		use("saadparwaiz1/cmp_luasnip")
+		use({
+			"rafamadriz/friendly-snippets",
+			module = { "cmp", "cmp_nvim_lsp" },
+			event = "InsertEnter",
+		})
 		-- Formatting
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
@@ -110,6 +120,12 @@ packer.startup({
 				"MunifTanjim/nui.nvim",
 				"rcarriga/nvim-notify",
 			},
+		})
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("plugins.config.blankline")
+			end,
 		})
 
 		-- Dependencies
