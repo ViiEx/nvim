@@ -1,9 +1,9 @@
 ---------------------------------
 -- Plugins
 ---------------------------------
-local packer = require("packer")
-
 local packer_bootstrap = require("bootstrap.packer")
+
+local packer = require("packer")
 
 -- Include packer.nvim
 vim.cmd([[packadd packer.nvim]])
