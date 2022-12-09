@@ -1,7 +1,11 @@
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local lualine = require("lualine")
+local lualine_ok, lualine = pcall(require, "lualine")
+
+if not lualine_ok then
+    return
+end
 
 -- Color table for highlights
 -- stylua: ignore

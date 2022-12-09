@@ -6,6 +6,9 @@ end
 
 local utils = require("core.utils")
 
+require("base46").load_highlight "lsp"
+require "nvchad_ui.lsp"
+
 local on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false

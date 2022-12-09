@@ -37,51 +37,6 @@ noice.setup({
 			opts = { skip = true },
 		},
 		{
-			view = "notify",
-			filter = {
-				event = "msg_show",
-				kind = { "", "echo", "echomsg" },
-			},
-			opts = {
-				replace = true,
-				merge = true,
-				title = "IDE",
-			},
-		},
-		{
-			view = "notify",
-			filter = { error = true },
-			opts = {
-				title = "ERROR",
-			},
-		},
-		{
-			view = "notify",
-			filter = { warning = true },
-			opts = {
-				title = "WARNING",
-			},
-		},
-		{
-			view = "notify",
-			filter = { event = "notify" },
-			opts = {
-				title = "IDE",
-			},
-		},
-		{
-			view = "notify",
-			filter = {
-				event = "noice",
-				kind = { "stats", "debug" },
-			},
-			opts = {
-				buf_options = { filetype = "lua" },
-				replace = true,
-				title = "IDE",
-			},
-		},
-		{
 			view = "mini",
 			filter = { event = "lsp" },
 		},

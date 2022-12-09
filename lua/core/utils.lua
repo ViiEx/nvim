@@ -5,6 +5,11 @@ local api = vim.api
 
 M.user_terminals = {}
 
+M.load_config = function()
+	local config = require "core.default_config"
+	return config
+end
+
 M.load_mappings = function(section, mapping_opt)
 	local function set_section_map(section_values)
 		if section_values.plugin then
@@ -85,6 +90,31 @@ function M.btn_gen(label, shortcut, hl_label, hl_icon)
 			},
 		},
 	}
+end
+
+M.load_override = function(options_table, name)
+  local plugin_configs, plugin_options = M.load_config().plugins, nil
+
+  -- support old plugin syntax for override
+  local user_override = plugin_configs.override and plugin_configs.override[name]
+  if user_override and type(user_override) == "table" then
+    plugin_options = user_override
+  end
+
+  -- if no old style plugin override is found, then use the new syntax
+  if not plugin_options and plugin_configs[name] then
+    local override_options = plugin_configs[name].override_options or {}
+    if type(override_options) == "table" then
+      plugin_options = override_options
+    elseif type(override_options) == "function" then
+      plugin_options = override_options()
+    end
+  end
+
+  -- make sure the plugin options are a table
+  plugin_options = type(plugin_options) == "table" and plugin_options or {}
+
+  return merge_tb("force", options_table, plugin_options)
 end
 
 return M

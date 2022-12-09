@@ -98,6 +98,7 @@ packer.startup({
 		})
 		use({
 			"numToStr/Comment.nvim",
+            opt = false,
 			setup = function()
 				require("core.utils").load_mappings("comment")
 			end,
@@ -116,17 +117,17 @@ packer.startup({
 				require("plugins.config.alpha")
 			end,
 		})
-		use({
-			"folke/noice.nvim",
-			event = "VimEnter",
-			config = function()
-				require("plugins.config.noice")
-			end,
-			requires = {
-				"MunifTanjim/nui.nvim",
-				"rcarriga/nvim-notify",
-			},
-		})
+		--use({
+		--	"folke/noice.nvim",
+		--	event = "VimEnter",
+		--	config = function()
+		--		require("plugins.config.noice")
+		--	end,
+		--	requires = {
+		--		"MunifTanjim/nui.nvim",
+		--		"rcarriga/nvim-notify",
+		--	},
+		--})
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			config = function()
@@ -140,15 +141,24 @@ packer.startup({
 		use("MunifTanjim/nui.nvim")
 		use("nvim-lua/popup.nvim")
 		-- File browser
-		use("nvim-telescope/telescope.nvim")
+		use({
+            "nvim-telescope/telescope.nvim",
+            cmd = "Telescope",
+            config = function()
+                require "plugins.config.telescope"
+            end,
+            setup = function()
+                require("core.utils").load_mappings "telescope"
+            end,
+        })
 		use("nvim-telescope/telescope-symbols.nvim")
 		-- Interface
-		use({
-			"akinsho/bufferline.nvim",
-			config = function()
-				require("bufferline").setup()
-			end,
-		})
+		--use({
+		--	"akinsho/bufferline.nvim",
+		--	config = function()
+		--		require("bufferline").setup()
+		--	end,
+		--})
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
@@ -156,15 +166,42 @@ packer.startup({
 				require("plugins.config.neo-tree")
 			end,
 		})
-		use({
-			"nvim-lualine/lualine.nvim",
-			config = function()
-				require("plugins.config.lualine")
-			end,
-		})
+		--use({
+		--	"nvim-lualine/lualine.nvim",
+		--	config = function()
+		--		require("plugins.config.lualine")
+		--	end,
+		--})
+        use({
+            "NvChad/ui",
+            opt = false,
+            --after = "base46",
+            config = function()
+                local present, nvchad_ui = pcall(require, "nvchad_ui")
+
+                if present then
+                    nvchad_ui.setup()
+                end
+            end,
+        })
 		-- Color scheme
 		use("elvessousa/sobrio")
 		use("kvrohit/mellow.nvim")
+        use({
+            "NvChad/base46",
+            config = function()
+                local ok, base46 = pcall(require, "base46")
+
+                if ok then
+                    base46.load_theme()
+                end
+            end,
+        })
+
+        use({
+            "NvChad/extensions",
+            module = { "telescope", "nvchad" }
+        })
 
 		if packer_bootstrap then
 			packer.sync()
