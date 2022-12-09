@@ -163,16 +163,16 @@ M.whichkey = {
 
 ## Showcase
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-21-38_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-21-38_3840x3600.png)
 
-![Screenshot_2](./.git/assets/Screenshot_2022-12-09-22-21-58_3840x3600.png)
+![Screenshot_2](./assets/Screenshot_2022-12-09-22-21-58_3840x3600.png)
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-22-35_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-22-35_3840x3600.png)
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-23-24_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-23-24_3840x3600.png)
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-23-47_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-23-47_3840x3600.png)
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-24-41_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-24-41_3840x3600.png)
 
-![Screenshot_1](./.git/assets/Screenshot_2022-12-09-22-25-23_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-09-22-25-23_3840x3600.png)
