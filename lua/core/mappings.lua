@@ -83,6 +83,7 @@ M.general = {
 			desc = "Open floating diagnostics",
 			opt = { silent = true },
 		},
+        ["<C-/>"] = {"gcc", "toggle comment"},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
@@ -90,6 +91,7 @@ M.general = {
 	v = {
 		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+        ["<C-/>"] = {"gb", "toggle comment"},
 	},
 
 	x = {
@@ -233,19 +235,11 @@ M.comment = {
 
 	-- toggle comment in both modes
 	n = {
-		["<C-/>"] = {
-			function()
-				require("Comment.api").toggle.linewise.current()
-			end,
-			"toggle comment",
-		},
+		
 	},
 
 	v = {
-		["<C-/>"] = {
-			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-			"toggle comment",
-		},
+		
 	},
 }
 

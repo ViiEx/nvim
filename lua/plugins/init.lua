@@ -99,9 +99,9 @@ packer.startup({
 		use({
 			"numToStr/Comment.nvim",
             opt = false,
-			setup = function()
-				require("core.utils").load_mappings("comment")
-			end,
+			config = function ()
+			 require("plugins.config.comment")
+			end
 		})
 		use({
 			"akinsho/toggleterm.nvim",
