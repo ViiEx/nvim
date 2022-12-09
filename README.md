@@ -35,7 +35,7 @@ git clone --branch config2.0 https://github.com/ViiEx/nvim.git ~/.config/nvim
 
 I'm using the `NvChad` themes `base46` and their `Telescope` extension to change the theme as well as their status and buffer bar. I find them really good looking and implemented them in here.
 
-There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua` and you can change with one you like to use by moddiging a single line at `./lua/plugins/config/alpha.lua`
+There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua` and you can change with one you like to use by modding a single line at `./lua/plugins/config/alpha.lua`
 
 ```lua
 -- ...
