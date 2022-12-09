@@ -15,7 +15,7 @@ This configuration aims to be my daily IDE and contains configurations from many
 - [Lvim](https://github.com/lvim-tech/lvim)
 - And more that I'm probably forgetting.
 
-I'm developing `web` and `mobile` apps dailly so my configs are surrounding this part the most.
+I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
 
 ## Installation
 
