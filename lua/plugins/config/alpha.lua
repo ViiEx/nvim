@@ -37,13 +37,16 @@ local plugin_count = {
 	val = "└─   " .. plugins .. " plugins in total ─┘",
 	opts = {
 		position = "center",
-		hl = "AlphaHeader",
+		hl = "AlphaFooter",
 	},
 }
 
 local footer = {
 	type = "text",
-	val = "-nvLeet-",
+	val = {
+		"-Man is a being in search of meaning-",
+		"                              - Plato",
+	},
 	opts = {
 		position = "center",
 		hl = "AlphaFooter",
@@ -106,10 +109,11 @@ local opts = {
 		section.header,
 		{ type = "padding", val = 2 },
 		section.heading,
-		section.plugin_count,
 		{ type = "padding", val = 1 },
 		-- section.top_bar,
 		section.buttons,
+		{ type = "padding", val = 1 },
+		section.plugin_count,
 		-- section.bot_bar,
 		{ type = "padding", val = 1 },
 		section.footer,

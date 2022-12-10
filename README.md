@@ -165,7 +165,7 @@ M.whichkey = {
 
 ![Screenshot_2](./assets/Screenshot_2022-12-09-22-21-58_3840x3600.png)
 
-![Screenshot_1](./assets/Screenshot_2022-12-09-22-22-35_3840x3600.png)
+![Screenshot_1](./assets/Screenshot_2022-12-10-12-27-51_3840x3600.png)
 
 ![Screenshot_1](./assets/Screenshot_2022-12-09-22-23-24_3840x3600.png)
 
