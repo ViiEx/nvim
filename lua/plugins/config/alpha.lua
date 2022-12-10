@@ -85,9 +85,9 @@ end
 local buttons = {
 	type = "group",
 	val = {
-		btn_gen("    Find File", " LDR f f ", "AlphaButtonLabelText", "WildMenu"),
-		btn_gen("    Grep word", " LDR f w ", "AlphaButtonLabelText", "String"),
-		btn_gen("  🧐 Emoji", " LDR f e ", "AlphaButtonLabelText", "string"),
+		btn_gen("  Find File", " LDR f f ", "AlphaButtonLabelText", "WildMenu"),
+		btn_gen("  Grep word", " LDR f w ", "AlphaButtonLabelText", "String"),
+		btn_gen("  Emoji", " LDR f e ", "AlphaButtonLabelText", "String"),
 	},
 	opts = {
 		spacing = 1,
