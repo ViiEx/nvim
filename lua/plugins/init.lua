@@ -98,10 +98,10 @@ packer.startup({
 		})
 		use({
 			"numToStr/Comment.nvim",
-            opt = false,
-			config = function ()
-			 require("plugins.config.comment")
-			end
+			opt = false,
+			config = function()
+				require("plugins.config.comment")
+			end,
 		})
 		use({
 			"akinsho/toggleterm.nvim",
@@ -142,66 +142,77 @@ packer.startup({
 		use("nvim-lua/popup.nvim")
 		-- File browser
 		use({
-            "nvim-telescope/telescope.nvim",
-            cmd = "Telescope",
-            config = function()
-                require "plugins.config.telescope"
-            end,
-            setup = function()
-                require("core.utils").load_mappings "telescope"
-            end,
-        })
+			"nvim-telescope/telescope.nvim",
+			cmd = "Telescope",
+			config = function()
+				require("plugins.config.telescope")
+			end,
+			setup = function()
+				require("core.utils").load_mappings("telescope")
+			end,
+		})
 		use("nvim-telescope/telescope-symbols.nvim")
 		-- Interface
-		--use({
-		--	"akinsho/bufferline.nvim",
-		--	config = function()
-		--		require("bufferline").setup()
-		--	end,
-		--})
-		use({
+		--[[ use({
+		"akinsho/bufferline.nvim",
+		config = function()
+			require("bufferline").setup()
+		end,
+		}) ]]
+		--[[ use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			config = function()
 				require("plugins.config.neo-tree")
 			end,
-		})
-		--use({
-		--	"nvim-lualine/lualine.nvim",
-		--	config = function()
-		--		require("plugins.config.lualine")
-		--	end,
-		--})
-        use({
-            "NvChad/ui",
-            opt = false,
-            --after = "base46",
-            config = function()
-                local present, nvchad_ui = pcall(require, "nvchad_ui")
+		}) ]]
+		--[[ use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("plugins.config.lualine")
+		end,
+		}) ]]
+		use({
+			"NvChad/ui",
+			opt = false,
+			--after = "base46",
+			config = function()
+				local present, nvchad_ui = pcall(require, "nvchad_ui")
 
-                if present then
-                    nvchad_ui.setup()
-                end
-            end,
-        })
+				if present then
+					nvchad_ui.setup()
+				end
+			end,
+		})
+		use({
+			"kyazdani42/nvim-tree.lua",
+			ft = "alpha",
+			cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+			config = function()
+				require("plugins.config.nvimtree")
+			end,
+			setup = function()
+				require("core.utils").load_mappings("nvimtree")
+			end,
+		})
 		-- Color scheme
 		use("elvessousa/sobrio")
 		use("kvrohit/mellow.nvim")
-        use({
-            "NvChad/base46",
-            config = function()
-                local ok, base46 = pcall(require, "base46")
+		use({
+			"NvChad/base46",
+			config = function()
+				local ok, base46 = pcall(require, "base46")
 
-                if ok then
-                    base46.load_theme()
-                end
-            end,
-        })
+				if ok then
+					base46.load_theme()
+				end
+			end,
+		})
 
-        use({
-            "NvChad/extensions",
-            module = { "telescope", "nvchad" }
-        })
+		use({
+			"NvChad/extensions",
+			module = { "telescope", "nvchad" },
+		})
 
 		if packer_bootstrap then
 			packer.sync()
