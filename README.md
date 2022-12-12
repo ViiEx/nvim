@@ -28,7 +28,7 @@ mv ~/.config/nvim ~/.config/nvim.back
 Then run the following command.
 
 ```sh
-git clone --branch config2.0 https://github.com/ViiEx/nvim.git ~/.config/nvim
+git clone https://github.com/ViiEx/nvim.git ~/.config/nvim
 ```
 
 ## Features
