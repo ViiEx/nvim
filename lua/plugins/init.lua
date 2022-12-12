@@ -66,11 +66,13 @@ packer.startup({
 		-- Syntax parser
 		use({
 			"nvim-treesitter/nvim-treesitter",
+			run = ":TSUpdate",
 			config = function()
 				require("plugins.config.treesitter")
 			end,
 		})
-		use("nvim-treesitter/nvim-treesitter-context")
+		use({ "nvim-treesitter/nvim-treesitter-context" })
+		use({ "nvim-treesitter/nvim-treesitter-angular" })
 		-- Utilities
 		use({
 			"windwp/nvim-autopairs",
@@ -180,7 +182,13 @@ packer.startup({
 				local present, nvchad_ui = pcall(require, "nvchad_ui")
 
 				if present then
-					nvchad_ui.setup()
+					nvchad_ui.setup({
+						tabufline = {
+							enabled = true,
+							lazyload = false,
+							overriden_modules = nil,
+						},
+					})
 				end
 			end,
 		})
