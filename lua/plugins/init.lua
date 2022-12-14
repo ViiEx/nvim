@@ -1,7 +1,7 @@
 ---------------------------------
 -- Plugins
 ---------------------------------
-local packer_bootstrap = require("bootstrap.packer")
+local packer_bootstrap = require("bootstrap.packer_bootstrap")
 
 local packer = require("packer")
 
@@ -94,8 +94,12 @@ packer.startup({
 		})
 		use({
 			"lewis6991/gitsigns.nvim",
+			ft = "gitcommit",
+			setup = function()
+				require("core.utils").gitsigns()
+			end,
 			config = function()
-				require("gitsigns").setup()
+				require("plugins.config.gitsigns_conf")
 			end,
 		})
 		use({
@@ -201,14 +205,6 @@ packer.startup({
 			end,
 			setup = function()
 				require("core.utils").load_mappings("nvimtree")
-			end,
-		})
-		-- git stuff
-		use({
-			"lewis6991/gitsigns.nvim",
-			ft = "gitcommit",
-			config = function()
-				require("plugins.config.gitsigns")
 			end,
 		})
 		-- Color scheme
