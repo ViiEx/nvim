@@ -186,13 +186,7 @@ packer.startup({
 				local present, nvchad_ui = pcall(require, "nvchad_ui")
 
 				if present then
-					nvchad_ui.setup({
-						tabufline = {
-							enabled = true,
-							lazyload = false,
-							overriden_modules = nil,
-						},
-					})
+					nvchad_ui.setup()
 				end
 			end,
 		})
