@@ -13,6 +13,7 @@ require("null-ls").setup({
 		formatting.phpcsfixer,
 		formatting.prettier,
 		formatting.stylua,
+        formatting.phpcbf,
 		diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 	},
 	on_attach = function(client, bufnr)

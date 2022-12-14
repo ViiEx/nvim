@@ -83,7 +83,7 @@ M.general = {
 			desc = "Open floating diagnostics",
 			opt = { silent = true },
 		},
-        ["<C-/>"] = {"gcc", "toggle comment"},
+		["<C-/>"] = { "gcc", "toggle comment" },
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
@@ -91,7 +91,7 @@ M.general = {
 	v = {
 		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-        ["<C-/>"] = {"gb", "toggle comment"},
+		["<C-/>"] = { "gb", "toggle comment" },
 	},
 
 	x = {
@@ -234,70 +234,142 @@ M.comment = {
 	plugin = true,
 
 	-- toggle comment in both modes
-	n = {
-		
-	},
+	n = {},
 
-	v = {
-		
-	},
+	v = {},
 }
 
 M.telescope = {
-  plugin = true,
+	plugin = true,
 
-  n = {
-    -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
-    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-    ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+	n = {
+		-- find
+		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
+		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
+		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
+		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
+		["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
 
-    -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
+		-- git
+		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
+		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+		-- pick a hidden term
+		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
 
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
-  },
+		-- theme switcher
+		["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+	},
 }
 
 M.tabufline = {
-  plugin = true,
+	plugin = true,
 
-  n = {
-    -- cycle through buffers
-    ["<TAB>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflineNext()
-      end,
-      "goto next buffer",
-    },
+	n = {
+		-- cycle through buffers
+		["<TAB>"] = {
+			function()
+				require("nvchad_ui.tabufline").tabuflineNext()
+			end,
+			"goto next buffer",
+		},
 
-    ["<S-Tab>"] = {
-      function()
-        require("nvchad_ui.tabufline").tabuflinePrev()
-      end,
-      "goto prev buffer",
-    },
+		["<S-Tab>"] = {
+			function()
+				require("nvchad_ui.tabufline").tabuflinePrev()
+			end,
+			"goto prev buffer",
+		},
 
-    -- pick buffers via numbers
-    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
+		-- pick buffers via numbers
+		["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
 
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("nvchad_ui.tabufline").close_buffer()
-      end,
-      "close buffer",
-    },
-  },
+		-- close buffer + hide terminal buffer
+		["<leader>x"] = {
+			function()
+				require("nvchad_ui.tabufline").close_buffer()
+			end,
+			"close buffer",
+		},
+	},
+}
+
+M.nvimtree = {
+	plugin = true,
+
+	n = {
+		-- toggle
+		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
+
+		-- focus
+		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
+	},
+}
+
+M.gitsigns = {
+	plugin = true,
+
+	n = {
+		-- Navigation through hunks
+		["]c"] = {
+			function()
+				if vim.wo.diff then
+					return "]c"
+				end
+				vim.schedule(function()
+					require("gitsigns").next_hunk()
+				end)
+				return "<Ignore>"
+			end,
+			"Jump to next hunk",
+			opts = { expr = true },
+		},
+
+		["[c"] = {
+			function()
+				if vim.wo.diff then
+					return "[c"
+				end
+				vim.schedule(function()
+					require("gitsigns").prev_hunk()
+				end)
+				return "<Ignore>"
+			end,
+			"Jump to prev hunk",
+			opts = { expr = true },
+		},
+
+		-- Actions
+		["<leader>rh"] = {
+			function()
+				require("gitsigns").reset_hunk()
+			end,
+			"Reset hunk",
+		},
+
+		["<leader>ph"] = {
+			function()
+				require("gitsigns").preview_hunk()
+			end,
+			"Preview hunk",
+		},
+
+		["<leader>gb"] = {
+			function()
+				package.loaded.gitsigns.blame_line()
+			end,
+			"Blame line",
+		},
+
+		["<leader>td"] = {
+			function()
+				require("gitsigns").toggle_deleted()
+			end,
+			"Toggle deleted",
+		},
+	},
 }
 
 return M
