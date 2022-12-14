@@ -68,7 +68,7 @@ end
 --      Not working as expected yet.
 --]]
 
-function M.btn_gen(label, shortcut, hl_label, hl_icon)
+M.btn_gen = function(label, shortcut, hl_label, hl_icon)
 	return {
 		type = "button",
 		on_press = function()
