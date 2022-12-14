@@ -4,21 +4,26 @@ if not present then
 	return
 end
 
+require("base46").load_highlight("lsp")
+require("nvchad_ui.lsp")
+
+local M = {}
 local utils = require("core.utils")
 
-require("base46").load_highlight "lsp"
-require "nvchad_ui.lsp"
-
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 
 	utils.load_mappings("lspconfig", { buffer = bufnr })
+
+	if client.server_capabilities.signatureHelpProvider then
+		require("nvchad_ui.signature").setup(client)
+	end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem = {
+M.capabilities.textDocument.completion.completionItem = {
 	documentationFormat = { "markdown", "plaintext" },
 	snippetSupport = true,
 	preselectSupport = true,
@@ -37,8 +42,8 @@ capabilities.textDocument.completion.completionItem = {
 }
 
 lspconfig.sumneko_lua.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+	on_attach = M.on_attach,
+	capabilities = M.capabilities,
 
 	settings = {
 		Lua = {
@@ -67,8 +72,8 @@ local function organize_imports()
 end
 
 lspconfig.tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
+	on_attach = M.on_attach,
+	capabilities = M.capabilities,
 	commands = {
 		OrganizeImports = {
 			organize_imports,
@@ -77,11 +82,42 @@ lspconfig.tsserver.setup({
 	},
 })
 
-local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls" }
+lspconfig.intelephense.setup({
+	on_attach = M.on_attach,
+	capabilities = M.capabilities,
+	settings = {
+		intelephense = {
+			stubs = {
+				"bcmath",
+				"bz2",
+				"calendar",
+				"Core",
+				"curl",
+				"zip",
+				"zlib",
+				"wordpress",
+				"woocommerce",
+				"acf-pro",
+				"wordpress-globals",
+				"wp-cli",
+				"genesis",
+				"polylang",
+			},
+			environment = {
+				includePaths = "/home/your-user/.composer/vendor/php-stubs/", -- this line forces the composer path for the stubs in case inteliphense don't find it...
+			},
+			files = {
+				maxSize = 5000000,
+			},
+		},
+	},
+})
+
+local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls", "phpactor" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
+		on_attach = M.on_attach,
+		capabilities = M.capabilities,
 	})
 end

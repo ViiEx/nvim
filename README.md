@@ -53,7 +53,9 @@ local default_header = {
 -- ..
 ```
 
-I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
+<!-- I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals. -->
+
+I was using `NeoTree` before but the `NvChad_ui` depends on `NvimTree` and it was crushing the buffer tab so I changed my File manager plugin to `NvimTree` and made few configuration changes to put it more to my likings.
 
 Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls` and you will find commented out plugins for `Lualine` and `Buffer Line` that I replaced with the `NvChad_ui`.
 
