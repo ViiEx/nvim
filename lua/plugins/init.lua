@@ -72,7 +72,7 @@ packer.startup({
 			end,
 		})
 		use({ "nvim-treesitter/nvim-treesitter-context" })
-		use({ "nvim-treesitter/nvim-treesitter-angular" })
+		-- use({ "nvim-treesitter/nvim-treesitter-angular" })
 		-- Utilities
 		use({
 			"windwp/nvim-autopairs",
