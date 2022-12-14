@@ -203,6 +203,14 @@ packer.startup({
 				require("core.utils").load_mappings("nvimtree")
 			end,
 		})
+		-- git stuff
+		use({
+			"lewis6991/gitsigns.nvim",
+			ft = "gitcommit",
+			config = function()
+				require("plugins.config.gitsigns")
+			end,
+		})
 		-- Color scheme
 		use("elvessousa/sobrio")
 		use("kvrohit/mellow.nvim")
