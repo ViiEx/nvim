@@ -17,6 +17,8 @@ This configuration aims to be my daily IDE and contains configurations from many
 
 I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
 
+This configuration is always updating with new staff, fixes (it needs a few or many ٩(◕‿◕｡)۶) and features I steal... I mean borrowing from other people.
+
 ## Installation
 
 Make sure you create a backup of your existing `NeoVim` config in case you already have one.
