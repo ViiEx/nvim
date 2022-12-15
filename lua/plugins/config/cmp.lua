@@ -1,7 +1,15 @@
 ---------------------------------
 -- Completion
 ---------------------------------
-local cmp = require("cmp")
+local present, cmp = pcall(require, "cmp")
+
+if not present then
+  return
+end
+
+require("base46").load_highlight "cmp"
+
+vim.o.completeopt = "menu,menuone,noselect"
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
