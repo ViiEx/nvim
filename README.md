@@ -133,8 +133,6 @@ local options = {
   },
 }
 
-options = require("core.utils").load_override(options, "folke/which-key.nvim")
-
 wk.setup(options)
 ```
 
