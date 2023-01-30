@@ -7,7 +7,7 @@ if not present then
 	return
 end
 
-require("base46").load_highlight("treesitter")
+dofile(vim.g.base46_cache .. "syntax")
 
 local options = {
 	ensure_installed = {

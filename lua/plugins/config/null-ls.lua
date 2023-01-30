@@ -26,8 +26,8 @@ require("null-ls").setup({
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
-					-- vim.lsp.buf.formatting_sync()
+					--vim.lsp.buf.format({ bufnr = bufnr })
+					vim.lsp.buf.formatting_sync()
 				end,
 			})
 		end

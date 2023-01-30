@@ -4,7 +4,7 @@ if not nvimtree_ok then
 	return
 end
 
-require("base46").load_highlight("nvimtree")
+dofile(vim.g.base46_cache .. "nvimtree")
 
 local options = {
 	filters = {

@@ -1,6 +1,7 @@
 local set = vim.opt
 local g = vim.g
 local config = require("core.utils").load_config()
+vim.opt.termguicolors = true
 
 g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "
@@ -27,7 +28,7 @@ set.splitright = true
 set.swapfile = false
 set.tabstop = 4
 set.softtabstop = 2
-set.termguicolors = true
+--set.termguicolors = true
 set.title = true
 set.ttimeoutlen = 400
 set.updatetime = 250

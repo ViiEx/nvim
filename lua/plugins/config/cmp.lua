@@ -4,10 +4,8 @@
 local present, cmp = pcall(require, "cmp")
 
 if not present then
-  return
+	return
 end
-
-require("base46").load_highlight "cmp"
 
 vim.o.completeopt = "menu,menuone,noselect"
 
@@ -111,6 +109,32 @@ if not status_luasnip_ok then
 	return
 end
 
+local field_arrangement = {
+	atom = { "kind", "abbr", "menu" },
+	atom_colored = { "kind", "abbr", "menu" },
+}
+
+local formatting_style = {
+	-- default fields order i.e completion word + item.kind + item.kind icons
+	fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
+
+	format = function(_, item)
+		local icons = require("nvchad_ui.icons").lspkind
+		local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+		if cmp_style == "atom" or cmp_style == "atom_colored" then
+			icon = " " .. icon .. " "
+			item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
+			item.kind = icon
+		else
+			icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
+			item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
+		end
+
+		return item
+	end,
+}
+
 local function border(hl_name)
 	return {
 		{ "╭", hl_name },
@@ -124,23 +148,16 @@ local function border(hl_name)
 	}
 end
 
-local cmp_window = require("cmp.utils.window")
-
-cmp_window.info_ = cmp_window.info
-cmp_window.info = function(self)
-	local info = self:info_()
-	info.scrollable = false
-	return info
-end
-
 cmp.setup({
 	window = {
 		completion = {
-			border = border("CmpBorder"),
-			winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+			side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
+			winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+			scrollbar = false,
 		},
 		documentation = {
 			border = border("CmpDocBorder"),
+			winhighlight = "Normal:CmpDoc",
 		},
 	},
 	snippet = {
@@ -148,13 +165,7 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	formatting = {
-		format = function(_, vim_item)
-			local icons = require("nvchad_ui.icons").lspkind
-			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-			return vim_item
-		end,
-	},
+	formatting = formatting_style,
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -194,26 +205,6 @@ cmp.setup({
 	}),
 })
 
--- File types specifics
-cmp.setup.filetype("gitcommit", {
-	sources = cmp.config.sources({
-		{ name = "cmp_git" },
-	}, {
-		{ name = "buffer" },
-	}),
-})
-
--- Command line completion
-cmp.setup.cmdline("/", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = { { name = "buffer" } },
-})
-
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-})
+if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
+	options.window.completion.border = border("CmpBorder")
+end

@@ -4,8 +4,7 @@ if not present then
 	return
 end
 
-require("base46").load_highlight("lsp")
-require("nvchad_ui.lsp")
+require("core.lsp")
 
 local M = {}
 local utils = require("core.utils")
@@ -17,7 +16,7 @@ M.on_attach = function(client, bufnr)
 	utils.load_mappings("lspconfig", { buffer = bufnr })
 
 	if client.server_capabilities.signatureHelpProvider then
-		require("nvchad_ui.signature").setup(client)
+		require("core.signatures").setup(client)
 	end
 end
 
