@@ -2,6 +2,12 @@
 
 # Neovim Config
 
+> :warning: **This configureation is under refactoring**
+> I'm currently migrating this config from packer to lazy.nvim
+> and I'm removing the NvChad related plugins since they don't
+> work as I would like.
+> Expect some big changes
+
 ## Introduction
 
 This is my personal configuration of `neovim` with the `mappings` I'm more confurtable with
