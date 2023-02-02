@@ -117,9 +117,7 @@ M.lspconfig = {
 		},
 
 		["gd"] = {
-			function()
-				vim.lsp.buf.definition()
-			end,
+            "<cmd>Lspsaga goto_definition<CR>",
 			"lsp definition",
 		},
 
@@ -128,7 +126,7 @@ M.lspconfig = {
                 local winid = require('ufo').peekFoldedLinesUnderCursor()
                 if not winid then
                     -- choose one of coc.nvim and nvim lsp
-                    vim.lsp.buf.hover()
+                    vim.cmd [[Lspsaga hover_doc]]
                 end
             end,
 			"lsp hover",
@@ -231,6 +229,11 @@ M.lspconfig = {
 			end,
 			"list workspace folders",
 		},
+        
+        ["<leader>lo"] = {
+            "<cmd>Lspsaga outline<cr>",
+            "Lsp outline"
+        }
 	},
 }
 

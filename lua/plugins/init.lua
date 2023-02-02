@@ -93,6 +93,13 @@ require("lazy").setup({
             require("mason-lspconfig").setup()
         end
     },
+    {
+        "glepnir/lspsaga.nvim",
+        event = "BufRead",
+        config = function()
+            require("lspsaga").setup({})
+        end,
+    },
     "RishabhRD/lspactions",
     -- END: LSP
 
@@ -178,6 +185,17 @@ require("lazy").setup({
         end
     },
     "nvim-telescope/telescope-symbols.nvim",
+    {
+        "nvim-telescope/telescope-ui-select.nvim",
+        config = function() require("telescope").load_extension("ui-select") end,
+        event = "LspAttach",
+    },
+    {
+        "dharmx/telescope-media.nvim",
+        config = function() require("telescope").load_extension("media") end,
+        keys = { "<leader>i" },
+        dev = true,
+    },
     -- END: Telescope
 
     "nvim-lua/plenary.nvim",
