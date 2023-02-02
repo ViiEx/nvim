@@ -141,13 +141,7 @@ bufferline.setup {
         diagnostics_indicator = diagnostics_indicator,
         custom_filter = custom_filter,
         offsets = {
-            {
-                filetype = "NeoTree",
-                text = "File Explorer",
-                separator = true,
-                highlight = "PanelHeading",
-                padding = 1,
-            }
+            { filetype = "neo-tree", text = "", padding = 1 },
         },
         color_icons = true,
         show_buffer_icons = true,

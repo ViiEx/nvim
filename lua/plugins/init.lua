@@ -163,7 +163,7 @@ require("lazy").setup({
         config = function()
             require("colorizer").setup()
         end
-},
+    },
     -- END: Dev Plugins
 
     -- START: Telescope

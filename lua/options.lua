@@ -42,7 +42,12 @@ set.whichwrap:append("<>[]hl")
 set.shortmess:append("sI")
 
 g.mapleader = " "
-g.base46_cache = vim.fn.stdpath "cache" .. "/nvchad/base46/"
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
 
 -- disable some builtin vim plugins
 local default_plugins = {

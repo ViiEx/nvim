@@ -31,7 +31,7 @@ M.general = {
 		["<C-k>"] = { "<C-w>k", "window up" },
 
 		-- save
-		["<C-s>"] = { "<cmd> w <CR>", "save file" },
+		["<C-s>"] = { "<cmd> w <CR>", opts = { silent = true } },
 
 		-- Copy all
 		["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
