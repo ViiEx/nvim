@@ -13,7 +13,7 @@ This configuration aims to be my daily IDE and contains configurations from many
 - [The NvChad project and it's extensions](https://github.com/NvChad/NvChad)
 - [KrakeNvim](https://github.com/dharmx/nvim)
 - [Lvim](https://github.com/lvim-tech/lvim)
-- [OctoVim] (https://github.com/OctoVim/OctoVim)
+- [OctoVim](https://github.com/OctoVim/OctoVim)
 - And more that I'm probably forgetting.
 
 I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
