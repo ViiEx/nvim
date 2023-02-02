@@ -2,12 +2,6 @@
 
 # Neovim Config
 
-> :warning: **This configureation is under refactoring**
-> I'm currently migrating this config from packer to lazy.nvim
-> and I'm removing the NvChad related plugins since they don't
-> work as I would like.
-> Expect some big changes
-
 ## Introduction
 
 This is my personal configuration of `neovim` with the `mappings` I'm more confurtable with
@@ -19,6 +13,7 @@ This configuration aims to be my daily IDE and contains configurations from many
 - [The NvChad project and it's extensions](https://github.com/NvChad/NvChad)
 - [KrakeNvim](https://github.com/dharmx/nvim)
 - [Lvim](https://github.com/lvim-tech/lvim)
+- [OctoVim] (https://github.com/OctoVim/OctoVim)
 - And more that I'm probably forgetting.
 
 I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
@@ -41,8 +36,6 @@ git clone https://github.com/ViiEx/nvim.git ~/.config/nvim
 
 ## Features
 
-I'm using the `NvChad` themes `base46` and their `Telescope` extension to change the theme as well as their status and buffer bar. I find them really good looking and implemented them in here.
-
 There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua` and you can change with one you like to use by modding a single line at `./lua/plugins/config/alpha.lua`
 
 ```lua
@@ -61,11 +54,11 @@ local default_header = {
 -- ..
 ```
 
-<!-- I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals. -->
+I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
 
-I was using `NeoTree` before but the `NvChad_ui` depends on `NvimTree` and it was crushing the buffer tab so I changed my File manager plugin to `NvimTree` and made few configuration changes to put it more to my likings.
+Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, `Lualine` and `Buffer Line`.
 
-Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls` and you will find commented out plugins for `Lualine` and `Buffer Line` that I replaced with the `NvChad_ui`.
+> Used to have `NvChad_ui` but it is a hustle to make it work properly here so I removed it.
 
 The config includes by default `hovered diagnostics` cause they are so much more easier to read for me
 so if you don't prefer it that way you can disable it
@@ -82,14 +75,14 @@ First install the plugin
 ```lua
 -- ./lua/plugins/init.lua
 
-use {
+{
   "folke/which-key.nvim",
   module = "which-key",
   keys = { "<leader>", '"', "'", "`" },
   config = function()
     require("plugins.config.which-key")
   end,
-  setup = function()
+  init = function()
     require("core.utils").load_mappings "whichkey"
   end,
 }
@@ -106,8 +99,6 @@ local present, wk = pcall(require, "which-key")
 if not present then
   return
 end
-
-require("base46").load_highlight "whichkey"
 
 local options = {
 
