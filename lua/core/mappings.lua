@@ -124,9 +124,13 @@ M.lspconfig = {
 		},
 
 		["K"] = {
-			function()
-				vim.lsp.buf.hover()
-			end,
+            function()
+                local winid = require('ufo').peekFoldedLinesUnderCursor()
+                if not winid then
+                    -- choose one of coc.nvim and nvim lsp
+                    vim.lsp.buf.hover()
+                end
+            end,
 			"lsp hover",
 		},
 
