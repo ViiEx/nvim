@@ -7,7 +7,7 @@ local btn_gen = require("core.utils").btn_gen
 
 local default_header = {
 	type = "text",
-	val = require("core.banners")["krakedking"],
+	val = require("core.banners")["pacman"],
 	opts = {
 		position = "center",
 		hl = "AlphaHeader",

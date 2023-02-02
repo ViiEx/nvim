@@ -4,10 +4,6 @@ if not present then
   return
 end
 
-vim.g.theme_switcher_loaded = true
-
-require("base46").load_highlight "telescope"
-
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -59,7 +55,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms" },
+  extensions_list = { "themes" },
 }
 
 telescope.setup(options)

@@ -7,8 +7,6 @@ if not present then
 	return
 end
 
-dofile(vim.g.base46_cache .. "syntax")
-
 local options = {
 	ensure_installed = {
 		"bash",

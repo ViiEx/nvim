@@ -1,8 +1,6 @@
---vim.cmd([[
---  filetype plugin indent on
---  syntax on
---  colorscheme mellow
---]])
+vim.cmd([[
+  colorscheme mellow
+]])
 
 vim.cmd(
 	[[autocmd FileType typescript,typescriptreact,javascript,javascriptreact autocmd BufWritePre <buffer> OrganizeImports]]
