@@ -7,8 +7,6 @@ if not present then
 	return
 end
 
-require("base46").load_highlight("treesitter")
-
 local options = {
 	ensure_installed = {
 		"bash",

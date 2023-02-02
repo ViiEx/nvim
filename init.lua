@@ -1,8 +1,8 @@
 local utils = require("core.utils")
 
+require("options")
 
 require("plugins")
-require("options")
 require("autocmds")
 
 utils.load_mappings("general", { buffer = bufnr })

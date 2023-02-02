@@ -1,11 +1,5 @@
 local set = vim.opt
 local g = vim.g
-local config = require("core.utils").load_config()
-
-g.nvchad_theme = config.ui.theme
-g.toggle_theme_icon = "   "
-g.transparency = config.ui.transparency
-g.theme_switcher_loaded = false
 
 set.background = "dark"
 set.clipboard = "unnamedplus"
@@ -18,7 +12,6 @@ set.hidden = true
 set.inccommand = "split"
 set.mouse = "a"
 set.number = true
--- set.relativenumber = false
 set.numberwidth = 2
 set.shiftwidth = 4
 set.smarttab = true
@@ -41,12 +34,11 @@ set.fillchars = { eob = " " }
 set.ignorecase = true
 set.smartcase = true
 set.undofile = true
-
 set.whichwrap:append("<>[]hl")
-
 set.shortmess:append("sI")
 
-vim.g.mapleader = " "
+g.mapleader = " "
+g.base46_cache = vim.fn.stdpath "cache" .. "/nvchad/base46/"
 
 -- disable some builtin vim plugins
 local default_plugins = {
