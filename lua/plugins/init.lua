@@ -104,6 +104,7 @@ require("lazy").setup({
         event = "BufRead",
         config = function()
             require("plugins.config.lspsaga_conf")
+            vim.cmd([[autocmd! CursorHold,CursorHoldI * Lspsaga show_line_diagnostics]])
         end,
     },
     "RishabhRD/lspactions",
