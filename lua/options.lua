@@ -50,7 +50,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- disable some builtin vim plugins
-local defauKlt_plugins = {
+local default_plugins = {
 	"2html_plugin",
 	"getscript",
 	"getscriptPlugin",
