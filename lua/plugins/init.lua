@@ -103,7 +103,7 @@ require("lazy").setup({
         "glepnir/lspsaga.nvim",
         event = "BufRead",
         config = function()
-            require("lspsaga").setup({})
+            require("plugins.config.lspsaga_conf")
         end,
     },
     "RishabhRD/lspactions",
