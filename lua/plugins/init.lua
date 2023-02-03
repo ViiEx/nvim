@@ -72,6 +72,12 @@ require("lazy").setup({
             require("plugins.config.ufo")
         end
     },
+    {
+        "yamatsum/nvim-cursorline",
+        config = function ()
+            require("plugins.config.cursorline")
+        end
+    },
     -- END: UI
 
     -- START: LSP

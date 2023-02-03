@@ -66,7 +66,7 @@ local config = {
       prompt_prefix = " קּ  ",
     },
     live_grep = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       mappings = {
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,

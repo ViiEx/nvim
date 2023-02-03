@@ -131,4 +131,13 @@ HL("WinBar", { bold = true })
 HL("WinBarNC", { bold = true })
 HL("WinSeparator", { foreground = "#171C21" })
 
+-- Telescope Colors
+HL("TelescopeBorder", { foreground = "#171C21", background = "#171C21" })
+HL("TelescopePromptBorder", { foreground = "#171C21", background = "#171C21" })
+HL("TelescopePromptNormal", { foreground = "#D4D4D5", background = "#171C21" })
+HL("TelescopePromptPrefix", { foreground = "#FB7373", background = "#171C21" })
+HL("TelescopePromptTitle", { foreground = "#171C21" , background = "#FB7373" })
+HL("TelescopeNormal", { background = "#171C21" })
+HL("TelescopePreviewTitle", { foreground = "#101317", background = "#79DCAA" })
+
 ---vim:filetype=lua
