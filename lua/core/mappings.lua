@@ -84,6 +84,22 @@ M.general = {
 			opt = { silent = true },
 		},
 		["<C-/>"] = { "gcc", "toggle comment" },
+
+        ["<TAB>"] = {
+		    "<cmd>BufferLineCycleNext<cr>",
+			"goto next buffer",
+		},
+
+		["<S-Tab>"] = {
+			"<cmd>BufferLineCyclePrev<cr>",
+			"goto prev buffer",
+		},
+        ["<leader>x"] = {
+			function()
+				require("core.utils").buf_kill("bd", bufnr, false)
+            end,
+			"close buffer",
+		},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
@@ -117,9 +133,7 @@ M.lspconfig = {
 		},
 
 		["gd"] = {
-			function()
-				vim.lsp.buf.definition()
-			end,
+            "<cmd>Lspsaga goto_definition<CR>",
 			"lsp definition",
 		},
 
@@ -128,7 +142,7 @@ M.lspconfig = {
                 local winid = require('ufo').peekFoldedLinesUnderCursor()
                 if not winid then
                     -- choose one of coc.nvim and nvim lsp
-                    vim.lsp.buf.hover()
+                    vim.cmd [[Lspsaga hover_doc]]
                 end
             end,
 			"lsp hover",
@@ -231,16 +245,12 @@ M.lspconfig = {
 			end,
 			"list workspace folders",
 		},
+        
+        ["<leader>lo"] = {
+            "<cmd>Lspsaga outline<cr>",
+            "Lsp outline"
+        }
 	},
-}
-
-M.comment = {
-	plugin = true,
-
-	-- toggle comment in both modes
-	n = {},
-
-	v = {},
 }
 
 M.telescope = {
@@ -265,50 +275,6 @@ M.telescope = {
 
 		-- theme switcher
 		["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
-	},
-}
-
-M.tabufline = {
-	plugin = true,
-
-	n = {
-		-- cycle through buffers
-		["<TAB>"] = {
-			function()
-				require("nvchad_ui.tabufline").tabuflineNext()
-			end,
-			"goto next buffer",
-		},
-
-		["<S-Tab>"] = {
-			function()
-				require("nvchad_ui.tabufline").tabuflinePrev()
-			end,
-			"goto prev buffer",
-		},
-
-		-- pick buffers via numbers
-		["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
-
-		-- close buffer + hide terminal buffer
-		["<leader>x"] = {
-			function()
-				require("nvchad_ui.tabufline").close_buffer()
-			end,
-			"close buffer",
-		},
-	},
-}
-
-M.nvimtree = {
-	plugin = true,
-
-	n = {
-		-- toggle
-		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvimtree" },
-
-		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
 	},
 }
 

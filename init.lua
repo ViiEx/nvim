@@ -1,3 +1,4 @@
+vim.cmd.colorscheme("fallback")
 local utils = require("core.utils")
 
 require("options")
