@@ -162,10 +162,10 @@ M.whichkey = {
 
 ## Showcase
 
-![Screenshot_2](./assets/Screenshot from 2023-02-03 14-00-31.png)
+![Screenshot_2](./assets/Screenshot_from_2023-02-03_14-00-31.png)
 
-![Screenshot_1](./assets/Screenshot from 2023-02-03 14-01-59.png)
+![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-01-59.png)
 
-![Screenshot_1](./assets/Screenshot from 2023-02-03 14-03-28.png)
+![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-03-28.png)
 
-![Screenshot_1](./assets/Screenshot from 2023-02-03 14-26-35.png)
+![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-26-35.png)
