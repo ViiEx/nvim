@@ -176,5 +176,5 @@ M.whichkey = {
 
 I'm using a nice plugin for **UI** like code folding that adds an arrow besides the line numbers.\
 You will notice that you also find some numbers in some cases along with it (you can see them in the screenshots as well).
-The only way as of now to stop that from happening is my compiling neovim yourself with a small patch.
+The only way as of now to stop that from happening is by compiling neovim yourself with a small patch.
 If you are intersed in that you can check [this](https://github.com/kevinhwang91/nvim-ufo/issues/4#issuecomment-1157722074) issue.
