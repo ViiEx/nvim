@@ -7,7 +7,7 @@
 This is my personal configuration of `neovim` with the `mappings` I'm more confurtable with
 and the `plugins` I like and use everyday. I'll say it first, this config is not perfect by any means. It needs a lot of fixes \
 and a lot of work but I am pretty happy with how it turned out up till now. I'm working on it almost daily and I change/fix a lot of stuff
-that are either buggie **or** I don't like.
+that are either buggy **or** I don't like.
 
 This configuration aims to be my daily IDE and contains configurations from many different amazing people such us:
 
