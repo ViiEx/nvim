@@ -8,7 +8,7 @@ set.cursorline = true
 set.expandtab = true
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldmethod = "manual"
-set.foldcolumn = '1'
+set.foldcolumn = "1"
 set.foldlevel = 99
 set.foldlevelstart = 99
 set.foldenable = true
@@ -30,7 +30,7 @@ set.title = true
 set.ttimeoutlen = 400
 set.updatetime = 250
 set.wildmenu = true
-set.wrap = true
+set.wrap = false
 set.laststatus = 3
 set.showmode = false
 set.smartindent = true
@@ -43,11 +43,9 @@ set.shortmess:append("sI")
 
 g.mapleader = " "
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+})
 
 -- disable some builtin vim plugins
 local default_plugins = {
