@@ -112,7 +112,7 @@ lspconfig.intelephense.setup({
 	},
 })
 
-local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls", "phpactor" }
+local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls", "phpactor", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
