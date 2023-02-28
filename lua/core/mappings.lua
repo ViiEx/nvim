@@ -50,17 +50,6 @@ M.general = {
 
 		["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Open File tree", opts = { silent = true } },
 
-		--["<leader>ff"] = {
-		--	":lua require('telescope.builtin').find_files()<CR>",
-		--	"Open telescope",
-		--	opts = { silent = true },
-		--},
-
-		--["<leader>fw"] = {
-		--	":lua require('telescope.builtin').live_grep()<cr>",
-		--	"Word loopup",
-		--	opts = { silent = true },
-		--},
 		["<leader>fe"] = {
 			":lua require'telescope.builtin'.symbols{ sources = {'kaomoji', 'gitmoji'} }<cr>",
 			opts = { silent = true },
@@ -83,10 +72,10 @@ M.general = {
 			desc = "Open floating diagnostics",
 			opt = { silent = true },
 		},
-		["<C-/>"] = { "gcc", "toggle comment" },
+		-- ["<C-/>"] = { "gcc", "toggle comment" },
 
-        ["<TAB>"] = {
-		    "<cmd>BufferLineCycleNext<cr>",
+		["<TAB>"] = {
+			"<cmd>BufferLineCycleNext<cr>",
 			"goto next buffer",
 		},
 
@@ -94,10 +83,10 @@ M.general = {
 			"<cmd>BufferLineCyclePrev<cr>",
 			"goto prev buffer",
 		},
-        ["<leader>x"] = {
+		["<leader>x"] = {
 			function()
 				require("core.utils").buf_kill("bd", bufnr, false)
-            end,
+			end,
 			"close buffer",
 		},
 	},
@@ -133,18 +122,18 @@ M.lspconfig = {
 		},
 
 		["gd"] = {
-            "<cmd>Lspsaga goto_definition<CR>",
+			"<cmd>Lspsaga goto_definition<CR>",
 			"lsp definition",
 		},
 
 		["K"] = {
-            function()
-                local winid = require('ufo').peekFoldedLinesUnderCursor()
-                if not winid then
-                    -- choose one of coc.nvim and nvim lsp
-                    vim.cmd [[Lspsaga hover_doc]]
-                end
-            end,
+			function()
+				local winid = require("ufo").peekFoldedLinesUnderCursor()
+				if not winid then
+					-- choose one of coc.nvim and nvim lsp
+					vim.cmd([[Lspsaga hover_doc]])
+				end
+			end,
 			"lsp hover",
 		},
 
@@ -245,11 +234,11 @@ M.lspconfig = {
 			end,
 			"list workspace folders",
 		},
-        
-        ["<leader>lo"] = {
-            "<cmd>Lspsaga outline<cr>",
-            "Lsp outline"
-        }
+
+		["<leader>lo"] = {
+			"<cmd>Lspsaga outline<cr>",
+			"Lsp outline",
+		},
 	},
 }
 

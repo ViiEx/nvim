@@ -179,9 +179,27 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+	},
+	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
+	{
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("plugins.config.headlines")
 		end,
 	},
 	-- END: Dev Plugins

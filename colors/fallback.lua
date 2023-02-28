@@ -1,4 +1,6 @@
-local function HL(name, val) vim.api.nvim_set_hl(0, name, val) end
+local function HL(name, val)
+	vim.api.nvim_set_hl(0, name, val)
+end
 
 vim.g.colors_name = "fallback"
 vim.o.background = "dark"
@@ -111,7 +113,7 @@ HL("StatusLineNC", { foreground = "#7AB0DF" })
 HL("StorageClass", { foreground = "#F75858" })
 HL("String", { foreground = "#79DCAA" })
 HL("Structure", { foreground = "#5FB0FC" })
-HL("Substitute", { background = "#B77EE0", foreground = "#101317" })
+HL("Substitute", { background = "#b77ee0", foreground = "#101317" })
 HL("TabLine", { background = "#101317", bold = true, foreground = "#2C3640" })
 HL("TabLineFill", { background = "#101317", foreground = "#7AB0DF" })
 HL("TabLineSel", { background = "#7AB0DF", bold = true, foreground = "#101317" })
@@ -136,8 +138,18 @@ HL("TelescopeBorder", { foreground = "#171C21", background = "#171C21" })
 HL("TelescopePromptBorder", { foreground = "#171C21", background = "#171C21" })
 HL("TelescopePromptNormal", { foreground = "#D4D4D5", background = "#171C21" })
 HL("TelescopePromptPrefix", { foreground = "#FB7373", background = "#171C21" })
-HL("TelescopePromptTitle", { foreground = "#171C21" , background = "#FB7373" })
+HL("TelescopePromptTitle", { foreground = "#171C21", background = "#FB7373" })
 HL("TelescopeNormal", { background = "#171C21" })
 HL("TelescopePreviewTitle", { foreground = "#101317", background = "#79DCAA" })
+
+-- Headline Colors
+HL("Headline1", { background = "#FFA0A0" })
+HL("Headline2", { background = "#54CED6" })
+HL("Headline3", { background = "#79DCAA" })
+HL("Headline4", { background = "#C397D8" })
+HL("Headline5", { background = "#FFE59E" })
+HL("Headline6", { background = "#171D20" })
+HL("CodeBlock", { background = "#151A1F" })
+HL("Dash", { background = "#171C21", bold = true })
 
 ---vim:filetype=lua

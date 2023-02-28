@@ -1,5 +1,24 @@
 local options = {
-	ensure_installed = { "lua-language-server" },
+	ensure_installed = {
+		"lua-language-server",
+		"angular-language-server",
+		"bash-language-server",
+		"css-lsp",
+		"cssmodules-language-server",
+		"emmet-ls",
+		"hmtl-lsp",
+		"intelephense",
+		"json-lsp",
+		"marksman",
+		"phpactor",
+		"phpcbf",
+		"prettier",
+		"shellcheck",
+		"stylua",
+		"tailwindcss-language-server",
+		"typescript-language-server",
+		"vim-language-server",
+	},
 
 	PATH = "prepend",
 
