@@ -7,6 +7,14 @@ if not present then
 	return
 end
 
+local cmp_ui = {
+	icons = true,
+	lspkind_text = true,
+	style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+	border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
+	selected_item_bg = "colored", -- colored / simple
+}
+
 vim.o.completeopt = "menu,menuone,noselect"
 
 local function border(hl_name)
@@ -34,14 +42,24 @@ end
 local options = {
 	window = {
 		completion = {
-			border = border("CmpBorder"),
-			winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-			scrollbar = "║",
+			side_padding = 0,
+			winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+			scrollbar = false,
+			border("CmpBorder"),
 		},
+		-- completion = {
+		-- 	border = border("CmpBorder"),
+		-- 	winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+		-- 	scrollbar = "║",
+		-- },
 		documentation = {
 			border = border("CmpDocBorder"),
-			scrollbar = "║",
+			winhighlight = "Normal:CmpDoc",
 		},
+		-- documentation = {
+		-- 	border = border("CmpDocBorder"),
+		-- 	scrollbar = "║",
+		-- },
 	},
 	snippet = {
 		expand = function(args)
@@ -49,9 +67,14 @@ local options = {
 		end,
 	},
 	formatting = {
+		fields = { "kind", "abbr", "menu" },
 		format = function(_, vim_item)
 			local icons = require("core.icons").lspkind
-			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+			local icon = (cmp_ui.icons and icons[vim_item.kind]) or ""
+
+			icon = " " .. icon .. " "
+			vim_item.menu = cmp_ui.lspkind_text and "   (" .. vim_item.kind .. ")" or ""
+			vim_item.kind = icon
 			return vim_item
 		end,
 	},
