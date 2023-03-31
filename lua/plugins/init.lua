@@ -110,7 +110,7 @@ require("lazy").setup({
 		event = "BufRead",
 		config = function()
 			require("plugins.config.lspsaga_conf")
-			vim.cmd([[autocmd! CursorHold * Lspsaga show_line_diagnostics]])
+			vim.cmd([[autocmd! CursorHold * Lspsaga show_line_diagnostics ++unfocus]])
 		end,
 	},
 	"RishabhRD/lspactions",
@@ -159,6 +159,9 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.treesitter")
 		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-angular",
 	},
 	{
 		"windwp/nvim-autopairs",
