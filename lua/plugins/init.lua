@@ -220,5 +220,4 @@ require("lazy").setup({
 
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
-	"kvrohit/mellow.nvim",
 })
