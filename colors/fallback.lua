@@ -316,4 +316,22 @@ HL("BufferLineOffsetSeparator", {
 	foreground = c.blue:HEX(true),
 	background = c.blue:HEX(true),
 })
+
+HL("NeoTreeCursorLine", { foreground = c.bright_green:HEX(true) })
+HL("NeoTreeDirectoryIcon", { foreground = c.bright_magenta:HEX(true) })
+HL("NeoTreeDirectoryName", { link = "NvimTreeFolderIcon" })
+HL("NeoTreeGitAdded", { foreground = c.yellow:HEX(true) })
+HL("NeoTreeGitDeleted", { foreground = c.red:HEX(true) })
+HL("NeoTreeGitIgnored", { foreground = c.bright_black:HEX(true) })
+HL("NeoTreeGitModified", { foreground = c.cyan:HEX(true) })
+HL("NeoTreeGitRenamed", { foreground = c.bright_blue:HEX(true) })
+HL("NeoTreeGitStaged", { foreground = c.magenta:spin(0.1):HEX(true) })
+HL("NeoTreeNormal", { background = c.black:darken(2):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("NeoTreeNormalNC", { background = c.black:darken(2):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("NeoTreeVertSplit", { background = c.black:darken(2):HEX(true), foreground = c.black:darken(2):HEX(true) })
+HL("NeoTreeWinSeparator", { background = c.black:darken(2):HEX(true), foreground = c.black:darken(2):HEX(true) })
+HL("NeoTreeRootName", { foreground = c.red:HEX(true) })
+HL("NeoTreeSymbolicLinkTarget", { foreground = c.cyan:HEX(true) })
+HL("NeoTreeIndentMarker", { foreground = c.black:brighten(1):lighten(5):HEX(true) })
+
 ---vim:filetype=lua
