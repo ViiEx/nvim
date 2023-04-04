@@ -54,7 +54,7 @@ local options = {
 		tab_size = 15,
 		diagnostics = false,
 		diagnostics_update_in_insert = false,
-		diagnostics_indicator = diagnostics_indicator,
+		-- diagnostics_indicator = diagnostics_indicator,
 		custom_filter = custom_filter,
 		offsets = {
 			{ filetype = "neo-tree", text = "", padding = 1 },
