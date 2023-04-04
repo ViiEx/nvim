@@ -3,7 +3,7 @@ if not present then
 	return
 end
 
-local btn_gen = require("core.utils").btn_gen
+local btn_gen = require("core.utils").generate_button
 
 local default_header = {
 	type = "text",
@@ -15,9 +15,7 @@ local default_header = {
 	},
 }
 
-local handle = io.popen('fd -d 2 . $HOME"/.local/share/nvim/site/pack/packer" | head -n -2 | wc -l | tr -d "\n" ')
-local plugins = handle:read("*a")
-handle:close()
+local plugins = require("lazy").stats().count
 
 local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
 local date = thingy:read("*a")
@@ -85,9 +83,42 @@ end
 local buttons = {
 	type = "group",
 	val = {
-		btn_gen("  Find File", " LDR f f ", "AlphaButtonLabelText", "WildMenu"),
-		btn_gen("  Grep word", " LDR f w ", "AlphaButtonLabelText", "String"),
-		btn_gen("  Emoji", " LDR f e ", "AlphaButtonLabelText", "String"),
+		btn_gen(function()
+			require("telescope.builtin").live_grep()
+		end, {
+			width = 25,
+			cursor = 15,
+			align = "center",
+			spacing = 2,
+			shortcut = { value = " LDR f w ", align = "right", hl = "AlphaKeyPrefix", lead = " ", trail = " " },
+			label = { value = "Grep", hl = "MoreMsg" },
+			icon = { value = " ", hl = "MsgSeparator" },
+		}),
+		btn_gen(function()
+			require("telescope.builtin").find_files()
+		end, {
+			width = 25,
+			cursor = 5,
+			align = "center",
+			spacing = 2,
+			shortcut = { value = " LDR f f ", align = "right", hl = "AlphaKeyPrefix", lead = " ", trail = " " },
+			label = { value = "Files", hl = "MoreMsg" },
+			icon = { value = " ", hl = "MsgSeparator" },
+		}),
+		btn_gen(function()
+			require("telescope.builtin").keymaps()
+		end, {
+			width = 25,
+			cursor = 5,
+			align = "center",
+			spacing = 2,
+			shortcut = { value = " LDR t k ", align = "right", hl = "AlphaKeyPrefix", lead = " ", trail = " " },
+			label = { value = "Keymaps", hl = "MoreMsg" },
+			icon = { value = " ", hl = "MsgSeparator" },
+		}),
+		-- btn_gen("  Find File", " LDR f f ", "AlphaButtonLabelText", "WildMenu"),
+		-- btn_gen("  Grep word", " LDR f w ", "AlphaButtonLabelText", "String"),
+		-- btn_gen("  Emoji", " LDR f e ", "AlphaButtonLabelText", "String"),
 	},
 	opts = {
 		spacing = 1,

@@ -60,30 +60,44 @@ end
 
 --[[
 --      Function from KrakeNvim
---      Not working as expected yet.
 --]]
 
-M.btn_gen = function(label, shortcut, hl_label, hl_icon)
-	return {
+M.generate_button = function(callback, opts)
+	local set = {
 		type = "button",
-		on_press = function()
-			local key = api.nvim_replace_termcodes(shortcut:gsub("%s", ""):gsub("LDR", "<leader>"), true, false, true)
-			api.nvim_feedkeys(key, "normal", false)
-		end,
-		val = label,
+		on_press = callback,
+		val = ("%s%s%s"):format(opts.icon.value, (" "):rep(opts.spacing or 2), opts.label.value),
 		opts = {
-			position = "center",
-			shortcut = shortcut,
-			cursor = 5,
-			width = 25,
-			align_shortcut = "right",
-			hl_shortcut = "AlphaKeyPrefix",
-			hl = {
-				{ hl_icon, 1, 3 }, -- highlight the icon glyph
-				{ hl_label, 4, 15 }, -- highlight the part after the icon glyph
-			},
+			position = vim.F.if_nil(opts.align, "center"),
+			shortcut = vim.F.if_nil(opts.shortcut.value, "DUMMY"),
+			cursor = vim.F.if_nil(opts.cursor, 5),
+			width = vim.F.if_nil(opts.width, 25),
+			align_shortcut = vim.F.if_nil(opts.shortcut.align, "center"),
+			hl_shortcut = vim.F.if_nil(opts.shortcut.hl, "AlphaKeyPrefix"),
+			hl = {},
 		},
 	}
+
+	if opts.shortcut.before then
+		set.opts.shortcut = opts.shortcut.before .. set.opts.shortcut
+	else
+		set.opts.shortcut = " " .. set.opts.shortcut
+	end
+
+	if opts.shortcut.after then
+		set.opts.shortcut = set.opts.shortcut .. opts.shortcut.after
+	else
+		set.opts.shortcut = set.opts.shortcut .. " "
+	end
+
+	local icon_length = opts.icon.value:len()
+	local label_length = opts.label.value:len()
+	set.opts.hl = {
+		{ opts.icon.hl, 1, icon_length },
+		{ opts.label.hl, icon_length + opts.spacing, icon_length + (opts.spacing or 2) + label_length },
+	}
+
+	return set
 end
 
 M.load_override = function(options_table, name)
