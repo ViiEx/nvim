@@ -129,6 +129,13 @@ require("lazy").setup({
 			require("plugins.config.aerial_conf")
 		end,
 	},
+	"folke/neodev.nvim",
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("plugins.config.fidget_conf")
+		end,
+	},
 	-- END: LSP
 
 	-- START: Completion
@@ -204,6 +211,12 @@ require("lazy").setup({
 			require("colorizer").setup()
 		end,
 	},
+	{
+		"danymat/neogen",
+		config = function()
+			require("plugins.config.neogen_conf")
+		end,
+	},
 	-- END: Dev Plugins
 
 	-- START: Telescope
@@ -235,6 +248,9 @@ require("lazy").setup({
 	},
 	-- END: Telescope
 
+	-- START: Utility
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
+	"matze/vim-move",
+	-- END: Utility
 })
