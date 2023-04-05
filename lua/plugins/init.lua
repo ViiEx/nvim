@@ -84,6 +84,15 @@ require("lazy").setup({
 			require("plugins.config.window-picker")
 		end,
 	},
+	"itchyny/vim-highlighturl",
+	"tyru/open-browser.vim",
+	"sindrets/diffview.nvim",
+	{
+		"kevinhwang91/nvim-hlslens",
+		config = function()
+			require("plugins.config.hlslens_conf")
+		end,
+	},
 	-- END: UI
 
 	-- START: LSP
@@ -114,6 +123,12 @@ require("lazy").setup({
 		end,
 	},
 	"RishabhRD/lspactions",
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("plugins.config.aerial_conf")
+		end,
+	},
 	-- END: LSP
 
 	-- START: Completion
@@ -141,6 +156,8 @@ require("lazy").setup({
 		module = { "cmp", "cmp_nvim_lsp" },
 		event = "InsertEnter",
 	},
+	"hrsh7th/cmp-nvim-lsp-document-symbol",
+	"hrsh7th/cmp-nvim-lsp-signature-help",
 	-- END: Completion
 
 	-- START: Formatting
