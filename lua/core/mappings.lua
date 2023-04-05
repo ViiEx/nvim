@@ -50,17 +50,6 @@ M.general = {
 
 		["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Open File tree", opts = { silent = true } },
 
-		--["<leader>ff"] = {
-		--	":lua require('telescope.builtin').find_files()<CR>",
-		--	"Open telescope",
-		--	opts = { silent = true },
-		--},
-
-		--["<leader>fw"] = {
-		--	":lua require('telescope.builtin').live_grep()<cr>",
-		--	"Word loopup",
-		--	opts = { silent = true },
-		--},
 		["<leader>fe"] = {
 			":lua require'telescope.builtin'.symbols{ sources = {'kaomoji', 'gitmoji'} }<cr>",
 			opts = { silent = true },
@@ -121,6 +110,11 @@ M.general = {
 		["<leader>gdh"] = {
 			"<CMD>DiffviewFileHistory<CR>",
 			"Diff view file history",
+		},
+
+		["<leader>nf"] = {
+			"<CMD>lua require('neogen').generate()<CR>",
+			opts = { noremap = true, silent = true },
 		},
 	},
 
