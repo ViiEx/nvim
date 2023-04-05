@@ -83,7 +83,7 @@ M.general = {
 			desc = "Open floating diagnostics",
 			opt = { silent = true },
 		},
-		["<C-/>"] = { "gcc", "toggle comment" },
+		["<C-/>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle linewise" },
 
 		["<TAB>"] = {
 			"<cmd>BufferLineCycleNext<cr>",
@@ -100,6 +100,28 @@ M.general = {
 			end,
 			"close buffer",
 		},
+
+		["<leader>ta"] = {
+			"<CMD>AerialToggle!<CR>",
+			"Toggle aerial",
+		},
+
+		["n"] = {
+			"<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
+			"Find with hlslens",
+			opts = { noremap = true, silent = true },
+		},
+
+		["N"] = {
+			"<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>",
+			"Find with hlsLens",
+			opts = { noremap = true, silent = true },
+		},
+
+		["<leader>gdh"] = {
+			"<CMD>DiffviewFileHistory<CR>",
+			"Diff view file history",
+		},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
@@ -107,7 +129,7 @@ M.general = {
 	v = {
 		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-		["<C-/>"] = { "gb", "toggle comment" },
+		["<C-/>"] = { "<Plug>(comment_toggle_blockwise_visual)", "Comment toggle blockwise" },
 	},
 
 	x = {
