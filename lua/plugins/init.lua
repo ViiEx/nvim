@@ -59,10 +59,16 @@ require("lazy").setup({
 			require("plugins.config.neo-tree")
 		end,
 	},
-	{
+	--[[ {
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("plugins.config.lualine")
+		end,
+	}, ]]
+	{
+		"freddiehaddad/feline.nvim",
+		config = function()
+			require("plugins.config.feline_conf")
 		end,
 	},
 	{
@@ -82,6 +88,15 @@ require("lazy").setup({
 		"s1n7ax/nvim-window-picker",
 		config = function()
 			require("plugins.config.window-picker")
+		end,
+	},
+	"itchyny/vim-highlighturl",
+	"tyru/open-browser.vim",
+	"sindrets/diffview.nvim",
+	{
+		"kevinhwang91/nvim-hlslens",
+		config = function()
+			require("plugins.config.hlslens_conf")
 		end,
 	},
 	-- END: UI
@@ -110,10 +125,23 @@ require("lazy").setup({
 		event = "BufRead",
 		config = function()
 			require("plugins.config.lspsaga_conf")
-			vim.cmd([[autocmd! CursorHold * Lspsaga show_line_diagnostics]])
+			vim.cmd([[autocmd! CursorHold * Lspsaga show_line_diagnostics ++unfocus]])
 		end,
 	},
 	"RishabhRD/lspactions",
+	{
+		"stevearc/aerial.nvim",
+		config = function()
+			require("plugins.config.aerial_conf")
+		end,
+	},
+	"folke/neodev.nvim",
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("plugins.config.fidget_conf")
+		end,
+	},
 	-- END: LSP
 
 	-- START: Completion
@@ -141,6 +169,8 @@ require("lazy").setup({
 		module = { "cmp", "cmp_nvim_lsp" },
 		event = "InsertEnter",
 	},
+	"hrsh7th/cmp-nvim-lsp-document-symbol",
+	"hrsh7th/cmp-nvim-lsp-signature-help",
 	-- END: Completion
 
 	-- START: Formatting
@@ -159,6 +189,9 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.treesitter")
 		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-angular",
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -188,18 +221,9 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	},
-	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		"danymat/neogen",
 		config = function()
-			require("plugins.config.headlines")
+			require("plugins.config.neogen_conf")
 		end,
 	},
 	-- END: Dev Plugins
@@ -233,7 +257,9 @@ require("lazy").setup({
 	},
 	-- END: Telescope
 
+	-- START: Utility
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
-	"kvrohit/mellow.nvim",
+	"matze/vim-move",
+	-- END: Utility
 })

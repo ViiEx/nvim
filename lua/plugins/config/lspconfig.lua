@@ -40,6 +40,8 @@ M.capabilities.textDocument.completion.completionItem = {
 	},
 }
 
+-- Configure lua_ls
+
 lspconfig.lua_ls.setup({
 	on_attach = M.on_attach,
 	capabilities = M.capabilities,
@@ -61,6 +63,8 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+-- Configure tsserver
+
 local function organize_imports()
 	local params = {
 		command = "_typescript.organizeImports",
@@ -80,6 +84,8 @@ lspconfig.tsserver.setup({
 		},
 	},
 })
+
+-- Configure php with ability to identify wordpress.
 
 lspconfig.intelephense.setup({
 	on_attach = M.on_attach,
@@ -112,7 +118,29 @@ lspconfig.intelephense.setup({
 	},
 })
 
-local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls", "phpactor", "tailwindcss", "marksman" }
+-- Configure Angular
+-- NVM Version
+-- local cwd = vim.fn.expand("$HOME/.nvm/versions/node/$VER/lib/node_modules/@angular/language-server")
+-- Node from package manager version
+-- local cwd = vim.fn.expand("/usr/local/lib/node_modules/@angular/language-server")
+-- FNM Version
+local cwd = vim.fn.expand(
+	"$HOME/.local/share/fnm/node-versions/v18.12.1/installation/lib/node_modules/@angular/language-server"
+)
+local project_library_path = cwd
+local cmd =
+	{ "ngserver", "--stdio", "--tsProbeLocations", project_library_path, "--ngProbeLocations", project_library_path }
+
+require("lspconfig").angularls.setup({
+	cmd = cmd,
+	on_new_config = function(new_config, new_root_dir)
+		new_config.cmd = cmd
+	end,
+})
+
+-- Configure the rest of the servers
+
+local servers = { "html", "cssls", "emmet_ls", "clangd", "jsonls", "phpactor", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({

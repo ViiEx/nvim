@@ -5,6 +5,8 @@ end
 vim.g.colors_name = "fallback"
 vim.o.background = "dark"
 
+local c = require("core.colo.theme.radium")
+
 HL("Character", { foreground = "#E1C58D" })
 HL("ColorColumn", { background = "#111419", foreground = "#171A20" })
 HL("Comment", { foreground = "#515C68" })
@@ -134,13 +136,203 @@ HL("WinBarNC", { bold = true })
 HL("WinSeparator", { foreground = "#171C21" })
 
 -- Telescope Colors
-HL("TelescopeBorder", { foreground = "#171C21", background = "#171C21" })
-HL("TelescopePromptBorder", { foreground = "#171C21", background = "#171C21" })
-HL("TelescopePromptNormal", { foreground = "#D4D4D5", background = "#171C21" })
-HL("TelescopePromptPrefix", { foreground = "#FB7373", background = "#171C21" })
-HL("TelescopePromptTitle", { foreground = "#171C21", background = "#FB7373" })
-HL("TelescopeNormal", { background = "#171C21" })
-HL("TelescopePreviewTitle", { foreground = "#101317", background = "#79DCAA" })
+HL("TelescopePreviewBorder", { foreground = c.black:darken(1):HEX(true), background = c.black:darken(1):HEX(true) })
+HL("TelescopeResultsBorder", { background = c.black:darken(2):HEX(true), foreground = c.black:darken(2):HEX(true) })
+HL(
+	"TelescopePromptBorder",
+	{ background = c.black:lighten(1):HEX(true), foreground = c.bright_black:darken(1.5):HEX(true) }
+)
+HL("TelescopePreviewNormal", { background = c.black:darken(1):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("TelescopeResultsNormal", { background = c.black:darken(2):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("TelescopePromptNormal", { background = c.black:lighten(1):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("TelescopePromptPrefix", { background = c.black:lighten(1):HEX(true), foreground = c.red:HEX(true) })
+HL("TelescopePromptCounter", { background = c.black:lighten(1):HEX(true), foreground = c.magenta:spin(0.1):HEX(true) })
+HL("TelescopePreviewTitle", { background = c.blue:HEX(true), foreground = c.black:HEX(true) })
+HL("TelescopeResultsTitle", { background = c.green:HEX(true), foreground = c.black:HEX(true) })
+HL("TelescopePromptTitle", { background = c.red:HEX(true), foreground = c.black:HEX(true) })
+HL("TelescopeSelection", { background = c.black:HEX(true), foreground = c.bright_cyan:HEX(true) })
+HL("TelescopeSelectionCaret", { background = c.black:HEX(true), foreground = c.bright_red:HEX(true) })
+HL("TelescopePreviewLine", { background = c.black:lighten(1):brighten(1):HEX(true) })
+HL("TelescopeMatching", { foreground = c.magenta:increase_red(10):decrease_blue(5):HEX(true) })
+
+-- Cmp
+HL("CmpSel", { foreground = "#101317", background = "#79DCAA" })
+HL("CmpItemAbbr", { foreground = "#D4D4D5" })
+HL("CmpItemAbbrMatch", { foreground = "#7AB0DF", bold = true })
+HL("CmpSel", { link = "PmenuSel", bold = true })
+
+HL("CmpItemMenu", { foreground = "#605f6f", italic = true })
+HL("CmpPmenu", { background = "#1E222A" })
+HL("CmpDoc", { background = "#151A1F" })
+HL("CmpDocBorder", { foreground = "#151A1F", background = "#151A1F" })
+
+HL("CmpItemKindConstant", { background = "#FFE59E", foreground = "#101317" })
+HL("CmpItemKindFunction", { background = "#7AB0DF", foreground = "#101317" })
+HL("CmpItemKindIdentifier", { background = "#FB7373", foreground = "#101317" })
+HL("CmpItemKindField", { background = "#FB7373", foreground = "#101317" })
+HL("CmpItemKindVariable", { background = "#C397D8", foreground = "#101317" })
+HL("CmpItemKindSnippet", { background = "#FB7373", foreground = "#101317" })
+HL("CmpItemKindText", { background = "#36C692", foreground = "#101317" })
+HL("CmpItemKindStructure", { background = "#C397D8", foreground = "#101317" })
+HL("CmpItemKindType", { background = "#FFDF8F", foreground = "#101317" })
+HL("CmpItemKindKeyword", { background = "#ffffff", foreground = "#101317" })
+HL("CmpItemKindMethod", { background = "#7AB0DF", foreground = "#101317" })
+HL("CmpItemKindConstructor", { background = "#54CED6", foreground = "#101317" })
+HL("CmpItemKindFolder", { background = "#ffffff", foreground = "#101317" })
+HL("CmpItemKindModule", { background = "#FFDF8F", foreground = "#101317" })
+HL("CmpItemKindProperty", { background = "#FB7373", foreground = "#101317" })
+HL("CmpItemKindEnum", { background = "#54CED6", foreground = "#101317" })
+HL("CmpItemKindUnit", { background = "#C397D8", foreground = "#101317" })
+HL("CmpItemKindClass", { background = "#70C0BA", foreground = "#101317" })
+HL("CmpItemKindFile", { background = "#ffffff", foreground = "#101317" })
+HL("CmpItemKindInterface", { background = "#36C692", foreground = "#101317" })
+HL("CmpItemKindColor", { background = "#D4D4D5", foreground = "#101317" })
+HL("CmpItemKindReference", { background = "#bfc6d4", foreground = "#101317" })
+HL("CmpItemKindEnumMember", { background = "#B77EE0", foreground = "#101317" })
+HL("CmpItemKindStruct", { background = "#C397D8", foreground = "#101317" })
+HL("CmpItemKindValue", { background = "#89DCEB", foreground = "#101317" })
+HL("CmpItemKindEvent", { background = "#FAE3B0", foreground = "#101317" })
+HL("CmpItemKindOperator", { background = "#bfc6d4", foreground = "#101317" })
+HL("CmpItemKindTypeParameter", { background = "#FB7373", foreground = "#101317" })
+HL("CmpItemKindCopilot", { background = "#36C692", foreground = "#101317" })
+
+-- BufferLine
+HL("BufferLineFill", {
+	foreground = c.black:lighten(10):brighten(5):HEX(true),
+	background = c.black:HEX(true),
+})
+HL("BufferLineBackground", {
+	foreground = c.black:lighten(10):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineTabSeparator", {
+	foreground = c.black:lighten(2):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineTabSeparatorSelected", {
+	foreground = c.black:HEX(true),
+})
+HL("BufferLineTabSelected", {
+	foreground = c.blue:HEX(true),
+	background = c.black:HEX(true),
+	bold = true,
+})
+HL("BufferLineTabClose", {
+	foreground = c.red:HEX(true),
+	background = c.black:HEX(true),
+})
+HL("BufferLineCloseButton", {
+	foreground = c.red:HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineCloseButtonVisible", {
+	foreground = c.red:HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLinecloseButtonSelected", {
+	foreground = c.black:HEX(true),
+	background = c.blue:HEX(true),
+})
+HL("BufferLineBuffer", {
+	foreground = c.black:lighten(2):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineBufferVisible", {
+	foreground = c.blue:HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineBufferSelected", {
+	foreground = c.black:HEX(true),
+	background = c.blue:HEX(true),
+	bold = true,
+	italic = false,
+})
+HL("BufferLineModified", {
+	foreground = c.green:HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineModifiedVisible", {
+	foreground = c.green:HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineModifiedSelected", {
+	foreground = c.black:HEX(true),
+	background = c.blue:HEX(true),
+})
+HL("BufferLineDuplicateSelected", {
+	foreground = c.black:lighten(10):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+	italic = false,
+})
+HL("BufferLineDuplicateVisible", {
+	foreground = c.black:lighten(10):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+	italic = false,
+})
+HL("BufferLineDuplicate", {
+	foreground = c.black:lighten(10):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+	italic = false,
+})
+HL("BufferLinePickSelected", {
+	foreground = c.green:lighten(10):HEX(true),
+	background = c.blue:HEX(true),
+	bold = true,
+	italic = false,
+})
+HL("BufferLinePickVisible", {
+	background = c.black:lighten(2):HEX(true),
+	foreground = c.bright_yellow:HEX(true),
+	bold = true,
+	italic = false,
+})
+HL("BufferLinePick", {
+	foreground = c.magenta:spin(0.1):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+	bold = true,
+	italic = false,
+})
+HL("BufferLineSeparator", {
+	foreground = c.black:lighten(2):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineIndicatorVisible", {
+	foreground = c.black:lighten(2):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineIndicatorSelected", {
+	background = c.blue:HEX(true),
+	foreground = c.blue:HEX(true),
+})
+HL("BufferLineSeparatorVisible", {
+	foreground = c.black:lighten(2):HEX(true),
+	background = c.black:lighten(2):HEX(true),
+})
+HL("BufferLineSeparatorSelected", {
+	background = c.blue:HEX(true),
+	foreground = c.blue:HEX(true),
+})
+HL("BufferLineOffsetSeparator", {
+	foreground = c.blue:HEX(true),
+	background = c.blue:HEX(true),
+})
+
+HL("NeoTreeCursorLine", { foreground = c.bright_green:HEX(true) })
+HL("NeoTreeDirectoryIcon", { foreground = c.bright_magenta:HEX(true) })
+HL("NeoTreeDirectoryName", { link = "NvimTreeFolderIcon" })
+HL("NeoTreeGitAdded", { foreground = c.yellow:HEX(true) })
+HL("NeoTreeGitDeleted", { foreground = c.red:HEX(true) })
+HL("NeoTreeGitIgnored", { foreground = c.bright_black:HEX(true) })
+HL("NeoTreeGitModified", { foreground = c.cyan:HEX(true) })
+HL("NeoTreeGitRenamed", { foreground = c.bright_blue:HEX(true) })
+HL("NeoTreeGitStaged", { foreground = c.magenta:spin(0.1):HEX(true) })
+HL("NeoTreeNormal", { background = c.black:darken(2):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("NeoTreeNormalNC", { background = c.black:darken(2):HEX(true), foreground = c.white:darken(10):HEX(true) })
+HL("NeoTreeVertSplit", { background = c.black:darken(2):HEX(true), foreground = c.black:darken(2):HEX(true) })
+HL("NeoTreeWinSeparator", { background = c.black:darken(2):HEX(true), foreground = c.black:darken(2):HEX(true) })
+HL("NeoTreeRootName", { foreground = c.red:HEX(true) })
+HL("NeoTreeSymbolicLinkTarget", { foreground = c.cyan:HEX(true) })
+HL("NeoTreeIndentMarker", { foreground = c.black:brighten(1):lighten(5):HEX(true) })
 
 -- Headline Colors
 HL("Headline1", { background = "#FFA0A0" })

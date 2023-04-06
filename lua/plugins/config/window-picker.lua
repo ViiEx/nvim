@@ -15,7 +15,7 @@ local options = {
 
 	-- when you go to window selection mode, status bar will show one of
 	-- following letters on them so you can use that letter to select the window
-	selection_chars = "FJDKSLA;CMRUEIWOQP",
+	selection_chars = "ABCDEFGHIGKLMNOP",
 
 	-- whether you want to use winbar instead of the statusline
 	-- "always" means to always use winbar,
@@ -23,13 +23,13 @@ local options = {
 	-- "smart" means to use winbar if cmdheight=0 and statusline if cmdheight > 0
 	use_winbar = "never", -- "always" | "never" | "smart"
 
-	-- whether to show 'Pick window:' prompt
+	-- whether to show 'pick window:' prompt
 	show_prompt = false,
 
 	-- if you want to manually filter out the windows, pass in a function that
 	-- takes two parameters. you should return window ids that should be
 	-- included in the selection
-	-- EX:-
+	-- ex:-
 	-- function(window_ids, filters)
 	--    -- filter the window_ids
 	--    -- return only the ones you want to include
@@ -44,7 +44,7 @@ local options = {
 		-- filter using buffer options
 		bo = {
 			-- if the file type is one of following, the window will be ignored
-			filetype = { "NvimTree", "neo-tree", "notify" },
+			filetype = { "nvimtree", "neo-tree", "notify" },
 
 			-- if the buffer type is one of following, the window will be ignored
 			buftype = { "terminal" },
@@ -67,17 +67,17 @@ local options = {
 
 	-- if you have include_current_win == true, then current_win_hl_color will
 	-- be highlighted using this background color
-	current_win_hl_color = "#1C2228",
+	current_win_hl_color = "#1c2228",
 
 	-- all the windows except the curren window will be highlighted using this
 	-- color
-	other_win_hl_color = "#FF6666",
+	other_win_hl_color = "#ff6666",
 
-	-- You can change the display string in status bar.
-	-- It supports '%' printf style. Such as `return char .. ': %f'` to display
-	-- buffer filepath. See :h 'stl' for details.
+	-- you can change the display string in status bar.
+	-- it supports '%' printf style. such as `return char .. ': %f'` to display
+	-- buffer filepath. see :h 'stl' for details.
 	selection_display = function(char)
-		return char
+		return " " .. char
 	end,
 }
 
