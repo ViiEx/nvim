@@ -51,35 +51,6 @@ local footer = {
 	},
 }
 
-local function button(sc, txt, keybind, keybind_opts)
-	local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
-
-	local opts = {
-		position = "center",
-		text = txt,
-		shortcut = sc,
-		cursor = 5,
-		width = 24,
-		align_shortcut = "right",
-		hl_shortcut = "AlphaButtons",
-		hl = "AlphaButtons",
-	}
-
-	if keybind then
-		opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
-	end
-
-	return {
-		type = "button",
-		val = txt,
-		on_press = function()
-			local key = vim.api.nvim_replace_termcodes(sc_, true, false, true)
-			vim.api.nvim_feedkeys(key, "normal", false)
-		end,
-		opts = opts,
-	}
-end
-
 local buttons = {
 	type = "group",
 	val = {
@@ -116,9 +87,6 @@ local buttons = {
 			label = { value = "Keymaps", hl = "MoreMsg" },
 			icon = { value = " ", hl = "MsgSeparator" },
 		}),
-		-- btn_gen("  Find File", " LDR f f ", "AlphaButtonLabelText", "WildMenu"),
-		-- btn_gen("  Grep word", " LDR f w ", "AlphaButtonLabelText", "String"),
-		-- btn_gen("  Emoji", " LDR f e ", "AlphaButtonLabelText", "String"),
 	},
 	opts = {
 		spacing = 1,
