@@ -59,10 +59,16 @@ require("lazy").setup({
 			require("plugins.config.neo-tree")
 		end,
 	},
-	{
+	--[[ {
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("plugins.config.lualine")
+		end,
+	}, ]]
+	{
+		"freddiehaddad/feline.nvim",
+		config = function()
+			require("plugins.config.feline_conf")
 		end,
 	},
 	{

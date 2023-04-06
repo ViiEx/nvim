@@ -9,6 +9,11 @@ and the `plugins` I like and use everyday. I'll say it first, this config is not
 and a lot of work but I am pretty happy with how it turned out up till now. I'm working on it almost daily and I change/fix a lot of stuff
 that are either buggy **or** I don't like.
 
+If this config suites your needs feel free to clone it and use it (I have installation instructions down below)
+or if you prefer the current state of it and don't want any sudden changes
+you can fork it and work from there, after that you can check if the commits I push are ok with you and if so you can pull the chackes to your
+own branch as well.
+
 This configuration aims to be my daily IDE and contains configurations from many different amazing people such us:
 
 - [The LunarVim project](https://github.com/LunarVim/LunarVim)
@@ -20,7 +25,11 @@ This configuration aims to be my daily IDE and contains configurations from many
 
 I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
 
-This configuration is always updating with new staff, fixes (it needs a few or many ٩(◕‿◕｡)۶) and features I steal... I mean borrowing from other people.
+This configuration is always updating with new staff, fixes (it needs a few or many ٩(◕‿◕｡)۶) and features I steal...
+I mean borrowing from other people.
+Do expect a lot of changes as I occasionally look what other people have done to get inspiration (and steal code).
+If you clone this config you may
+find it looking quite different from what the screenshots display below.
 
 ## Installation
 
@@ -38,7 +47,8 @@ git clone https://github.com/ViiEx/nvim.git ~/.config/nvim
 
 ## Features
 
-There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua` and you can change with one you like to use by modding a single line at `./lua/plugins/config/alpha.lua`
+There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua`
+and you can change with one you like to use by modding a single line at `./lua/plugins/config/alpha.lua`
 
 ```lua
 -- ...
@@ -58,7 +68,7 @@ local default_header = {
 
 I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
 
-Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, `Lualine` and `Buffer Line`.
+Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, ~~Lualine~~ `Feline` and `Buffer Line`.
 
 > Used to have `NvChad_ui` but it is a hustle to make it work properly here so I removed it.
 
