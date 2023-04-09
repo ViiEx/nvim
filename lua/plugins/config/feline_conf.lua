@@ -1,3 +1,7 @@
+-- Taken from @dharmx at github
+-- Link: https://github.com/dharmx/
+-- Repo: nvim-colo
+
 local ok, feline = pcall(require, "feline")
 
 if not ok then
