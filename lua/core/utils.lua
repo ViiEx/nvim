@@ -100,7 +100,7 @@ M.generate_button = function(callback, opts)
 	return set
 end
 
-M.load_override = function(options_table, name)
+--[[ M.load_override = function(options_table, name)
 	local plugin_configs, plugin_options = M.load_config().plugins, nil
 
 	-- support old plugin syntax for override
@@ -123,7 +123,7 @@ M.load_override = function(options_table, name)
 	plugin_options = type(plugin_options) == "table" and plugin_options or {}
 
 	return merge_tb("force", options_table, plugin_options)
-end
+end ]]
 
 M.buf_kill = function(kill_command, bufnr, force)
 	kill_command = kill_command or "bd"
