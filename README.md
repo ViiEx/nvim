@@ -11,7 +11,7 @@ that are either buggy **or** I don't like.
 
 If this config suites your needs feel free to clone it and use it (I have installation instructions down below)
 or if you prefer the current state of it and don't want any sudden changes
-you can fork it and work from there, after that you can check if the commits I push are ok with you and if so you can pull the chackes to your
+you can fork it and work from there, after that you can check if the commits I push are ok with you and if so you can pull the changes to your
 own branch as well.
 
 This configuration aims to be my daily IDE and contains configurations from many different amazing people such us:
