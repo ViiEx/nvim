@@ -210,7 +210,6 @@ M.set_banners = function()
 		attach_mappings = function(prompt_bufnr, map)
 			actions.select_default:replace(function()
 				actions.close(prompt_bufnr)
-				print(vim.g.my_alpha_banner)
 				M.replace_word(vim.g.my_alpha_banner, action_state.get_selected_entry()[1])
 			end)
 			return true
