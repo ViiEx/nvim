@@ -1,8 +1,6 @@
 local M = {}
 
 local merge_tb = vim.tbl_deep_extend
-local api = vim.api
-
 M.user_terminals = {}
 
 M.load_mappings = function(section, mapping_opt)
@@ -169,11 +167,22 @@ M.buf_kill = function(kill_command, bufnr, force)
 	end
 end
 
+M.replace_word = function(old, new)
+	local globals = vim.fn.stdpath("config") .. "/lua/globals.lua"
+	local file = io.open(globals, "r")
+	local added_pattern = string.gsub(old, "-", "%%-") -- add % before - if exists
+	local new_content = file:read("*all"):gsub(added_pattern, new)
+
+	file = io.open(globals, "w")
+	file:write(new_content)
+	file:close()
+end
+
 M.set_banners = function()
 	local pickers = require("telescope.pickers")
 	local finders = require("telescope.finders")
-	local sorters = require("telescope.sorters")
-	local themes = require("telescope.themes")
+	local conf = require("telescope.config").values
+	local previewers = require("telescope.previewers")
 
 	local actions = require("telescope.actions")
 	local action_state = require("telescope.actions.state")
@@ -187,12 +196,20 @@ M.set_banners = function()
 	local opts = {
 		prompt_title = "Banners",
 		finder = finders.new_table({ table.unpack(banner_names) }),
-		sorter = sorters.get_generic_fuzzy_sorter({}),
+		sorter = conf.generic_sorter(),
+		previewer = previewers.new_buffer_previewer({
+			title = "Banner Preview",
+			define_preview = function(self, entry, status)
+				vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, {
+					table.unpack(require("core.banners")[entry.display]),
+				})
+			end,
+		}),
 		attach_mappings = function(prompt_bufnr, map)
 			actions.select_default:replace(function()
 				actions.close(prompt_bufnr)
-				local selection = action_state.get_selected_entry()
-				vim.g.my_alpha_banner = selection
+				print(vim.g.my_alpha_banner)
+				M.replace_word(vim.g.my_alpha_banner, action_state.get_selected_entry()[1])
 			end)
 			return true
 		end,

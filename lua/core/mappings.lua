@@ -117,7 +117,7 @@ M.general = {
 			opts = { noremap = true, silent = true },
 		},
 
-		["<leader>tr"] = {
+		["<leader>cb"] = {
 			function()
 				require("core.utils").set_banners()
 			end,
