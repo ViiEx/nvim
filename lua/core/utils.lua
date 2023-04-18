@@ -167,6 +167,8 @@ M.buf_kill = function(kill_command, bufnr, force)
 	end
 end
 
+-- Thanks to https://nvchad.com/
+-- Source: https://github.com/NvChad/extensions/blob/f76b8460d2f960c1c5c2af40845ead33c725bbf7/lua/nvchad/init.lua#L21
 M.replace_word = function(old, new)
 	local globals = vim.fn.stdpath("config") .. "/lua/globals.lua"
 	local file = io.open(globals, "r")
