@@ -116,6 +116,13 @@ M.general = {
 			"<CMD>lua require('neogen').generate()<CR>",
 			opts = { noremap = true, silent = true },
 		},
+
+		["<leader>cb"] = {
+			function()
+				require("core.utils").set_banners()
+			end,
+			opts = { silent = true },
+		},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },

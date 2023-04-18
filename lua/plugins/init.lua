@@ -212,6 +212,9 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+	},
+	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()

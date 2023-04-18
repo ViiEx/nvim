@@ -47,24 +47,11 @@ git clone https://github.com/ViiEx/nvim.git ~/.config/nvim
 
 ## Features
 
-There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua`
-and you can change with one you like to use by modding a single line at `./lua/plugins/config/alpha.lua`
+There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua`.
 
-```lua
--- ...
-
-local default_header = {
-	type = "text",
-	val = require("core.banners")["krakedking"], -- <- Change the name here.
-	opts = {
-		position = "center",
-		hl = "AlphaHeader",
-		-- wrap = "overflow";
-	},
-}
-
--- ..
-```
+In order to change the banner for Dashboard I have created a small telescope picker that lists and previews
+all the banners. To use it type `<leader>cb` and select the banner you like. After that the next time you
+open NeoVim the new banner will great you.
 
 I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
 

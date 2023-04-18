@@ -1,8 +1,6 @@
 local M = {}
 
 local merge_tb = vim.tbl_deep_extend
-local api = vim.api
-
 M.user_terminals = {}
 
 M.load_mappings = function(section, mapping_opt)
@@ -167,6 +165,58 @@ M.buf_kill = function(kill_command, bufnr, force)
 	if api.nvim_buf_is_valid(bufnr) and bo[bufnr].buflisted then
 		vim.cmd(string.format("%s %d", kill_command, bufnr))
 	end
+end
+
+-- Thanks to https://nvchad.com/
+-- Source: https://github.com/NvChad/extensions/blob/f76b8460d2f960c1c5c2af40845ead33c725bbf7/lua/nvchad/init.lua#L21
+M.replace_word = function(old, new)
+	local globals = vim.fn.stdpath("config") .. "/lua/globals.lua"
+	local file = io.open(globals, "r")
+	local added_pattern = string.gsub(old, "-", "%%-") -- add % before - if exists
+	local new_content = file:read("*all"):gsub(added_pattern, new)
+
+	file = io.open(globals, "w")
+	file:write(new_content)
+	file:close()
+end
+
+M.set_banners = function()
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local conf = require("telescope.config").values
+	local previewers = require("telescope.previewers")
+
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+
+	local banner_names = {}
+
+	for banner_key, banner_value in pairs(require("core.banners")) do
+		table.insert(banner_names, banner_key)
+	end
+
+	local opts = {
+		prompt_title = "Banners",
+		finder = finders.new_table({ table.unpack(banner_names) }),
+		sorter = conf.generic_sorter(),
+		previewer = previewers.new_buffer_previewer({
+			title = "Banner Preview",
+			define_preview = function(self, entry, status)
+				vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, {
+					table.unpack(require("core.banners")[entry.display]),
+				})
+			end,
+		}),
+		attach_mappings = function(prompt_bufnr, map)
+			actions.select_default:replace(function()
+				actions.close(prompt_bufnr)
+				M.replace_word(vim.g.my_alpha_banner, action_state.get_selected_entry()[1])
+			end)
+			return true
+		end,
+	}
+
+	pickers.new(opts):find()
 end
 
 return M

@@ -115,7 +115,7 @@ HL("StatusLineNC", { foreground = "#7AB0DF" })
 HL("StorageClass", { foreground = "#F75858" })
 HL("String", { foreground = "#79DCAA" })
 HL("Structure", { foreground = "#5FB0FC" })
-HL("Substitute", { background = "#B77EE0", foreground = "#101317" })
+HL("Substitute", { background = "#b77ee0", foreground = "#101317" })
 HL("TabLine", { background = "#101317", bold = true, foreground = "#2C3640" })
 HL("TabLineFill", { background = "#101317", foreground = "#7AB0DF" })
 HL("TabLineSel", { background = "#7AB0DF", bold = true, foreground = "#101317" })
@@ -333,5 +333,15 @@ HL("NeoTreeWinSeparator", { background = c.black:darken(2):HEX(true), foreground
 HL("NeoTreeRootName", { foreground = c.red:HEX(true) })
 HL("NeoTreeSymbolicLinkTarget", { foreground = c.cyan:HEX(true) })
 HL("NeoTreeIndentMarker", { foreground = c.black:brighten(1):lighten(5):HEX(true) })
+
+-- Headline Colors
+HL("Headline1", { background = "#FFA0A0" })
+HL("Headline2", { background = "#54CED6" })
+HL("Headline3", { background = "#79DCAA" })
+HL("Headline4", { background = "#C397D8" })
+HL("Headline5", { background = "#FFE59E" })
+HL("Headline6", { background = "#171D20" })
+HL("CodeBlock", { background = "#151A1F" })
+HL("Dash", { background = "#171C21", bold = true })
 
 ---vim:filetype=lua
