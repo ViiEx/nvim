@@ -169,4 +169,36 @@ M.buf_kill = function(kill_command, bufnr, force)
 	end
 end
 
+M.set_banners = function()
+	local pickers = require("telescope.pickers")
+	local finders = require("telescope.finders")
+	local sorters = require("telescope.sorters")
+	local themes = require("telescope.themes")
+
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+
+	local banner_names = {}
+
+	for banner_key, banner_value in pairs(require("core.banners")) do
+		table.insert(banner_names, banner_key)
+	end
+
+	local opts = {
+		prompt_title = "Banners",
+		finder = finders.new_table({ table.unpack(banner_names) }),
+		sorter = sorters.get_generic_fuzzy_sorter({}),
+		attach_mappings = function(prompt_bufnr, map)
+			actions.select_default:replace(function()
+				actions.close(prompt_bufnr)
+				local selection = action_state.get_selected_entry()
+				vim.g.my_alpha_banner = selection
+			end)
+			return true
+		end,
+	}
+
+	pickers.new(opts):find()
+end
+
 return M
