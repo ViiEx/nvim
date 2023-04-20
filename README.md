@@ -61,7 +61,7 @@ Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, ~~Lualine~~
 
 The config includes by default `hovered diagnostics` cause they are so much more easier to read for me
 so if you don't prefer it that way you can disable it
-by commenting out the `autocmd` command in the file `./lua/autocmds.lua`
+by commenting out the `autocmd` in the `./lua/plugins/init.lua` file under the `lspsaga` plugin.
 
 I have telescope with emojis enabled cause I like using them as well.
 
