@@ -51,7 +51,7 @@ There are many different banners taken from `KrakeNvim` that can be found at `./
 
 In order to change the banner for Dashboard I have created a small telescope picker that lists and previews
 all the banners. To use it type `<leader>cb` and select the banner you like. After that the next time you
-open NeoVim the new banner will great you.
+open NeoVim the new banner will greet you.
 
 I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
 
