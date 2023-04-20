@@ -65,6 +65,9 @@ by commenting out the `autocmd` in the `./lua/plugins/init.lua` file under the `
 
 I have telescope with emojis enabled cause I like using them as well.
 
+I don't have any plugin (at the moment) for theme, I have customly edit the highlight variables of NeoVim
+and all the plugins I use. Basically the theme here is the file `./colors/fallback.lua` but more about that below.
+
 Finally I don't use `Which-key` since I remember my keybindings but you can easily install it to help you.
 
 ### Small guide to use Which-key
@@ -158,6 +161,28 @@ M.whichkey = {
 }
 -- ....
 ```
+
+## Theme
+
+So few words for the theme. As I wrote above the theme is basically the file `./colors/fallback.lua`.
+That has both benefits and disadvantages at the same time.
+
+Let me explain.
+
+The possitive aspect is that this way I have full control of the colors that I use and how they blend.
+Meaning I can change any highlight value on the spot, that's cool but...
+
+That creates an issue or two.
+
+To be more specific my problems with this method is that I have a huge file that is the theme, if I want to
+change the colors to something like nord or gruvbox pallet it is gonna be a hastle and everytime I add a new plugin
+in case it uses highlights that I haven't specified I will have to add them to the file.
+
+Currently I have copied [dharmx](https://github.com/dharmx/nvim) way of doing few staff like the `HL` function
+and the few `Color` functions from his plugin that you can find [here](https://github.com/dharmx/colo.nvim).
+
+At the end of the day my goal is to actually implement his `colo.nvim` here but as of the day I'm writting this
+docs it is not ready yet.
 
 ## Showcase
 
