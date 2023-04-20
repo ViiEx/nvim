@@ -179,7 +179,7 @@ change the colors to something like nord or gruvbox pallet it is gonna be a hast
 in case it uses highlights that I haven't specified I will have to add them to the file.
 
 Currently I have copied [dharmx](https://github.com/dharmx/nvim) way of doing few staff like the `HL` function
-and the few `Color` functions from his plugin that you can find [here](https://github.com/dharmx/colo.nvim).
+and few `Color` functions from his plugin that you can find [here](https://github.com/dharmx/colo.nvim).
 
 At the end of the day my goal is to actually implement his `colo.nvim` here but as of the day I'm writting this
 docs it is not ready yet.
