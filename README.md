@@ -161,17 +161,7 @@ M.whichkey = {
 
 ## Showcase
 
-![Screenshot_2](./assets/Screenshot_from_2023-02-03_14-00-31.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-01-59.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-03-28.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-26-35.png)
-
-## Few things
-
-I'm using a nice plugin for **UI** like code folding that adds an arrow besides the line numbers.\
-You will notice that you also find some numbers in some cases along with it (you can see them in the screenshots as well).
-The only way as of now to stop that from happening is by compiling neovim yourself with a small patch.
-If you are intersed in that you can check [this](https://github.com/kevinhwang91/nvim-ufo/issues/4#issuecomment-1157722074) issue.
+![Screenshot_1](./assets/2023-04-20_16-29.png)
+![Screenshot_2](./assets/2023-04-20_16-30.png)
+![Screenshot_3](./assets/2023-04-20_16-31.png)
+![Screenshot_4](./assets/2023-04-20_16-31_1.png)
