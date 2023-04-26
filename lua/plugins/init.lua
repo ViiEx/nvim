@@ -3,6 +3,12 @@
 ---------------------------------
 require("bootstrap.lazy-manager")
 
+local opts = {
+	dev = {
+		path = "~/Documents/nvim-plugs",
+	},
+}
+
 require("lazy").setup({
 	-- START: UI
 	{
@@ -221,6 +227,7 @@ require("lazy").setup({
 			require("plugins.config.neogen_conf")
 		end,
 	},
+	{ "github/copilot.vim" },
 	-- END: Dev Plugins
 
 	-- START: Telescope
@@ -263,8 +270,4 @@ require("lazy").setup({
 		end,
 	},
 	-- END: Utility
-}, {
-	dev = {
-		path = "~/Documents/nvim-plugs",
-	},
-})
+}, opts)
