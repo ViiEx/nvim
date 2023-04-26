@@ -1,9 +1,28 @@
-require("neo-tree").setup({
+local status_ok, neotree = pcall(require, "neo-tree")
+
+if not status_ok then
+	return
+end
+
+local icons = require("core.icons")
+
+local opts = {
 	close_if_last_window = false,
 	enable_diagnostics = false,
 	enable_git_status = true,
 	popup_border_style = "rounded",
 	sort_case_insensitive = false,
+	source_selector = {
+		winbar = true,
+		content_layout = "center",
+		sources = {
+			{ source = "filesystem", display_name = icons.lspkind.Folder .. " File" },
+			{ source = "buffers", display_name = icons.devicons.default_icon.icon .. " Bufs" },
+			{ source = "git_status", display_name = icons.lspkind.Copilot .. " Git" },
+			{ source = "diagnostics", display_name = icons.devicons.toml.icon .. " Diagnostic" },
+		},
+	},
+
 	filesystem = {
 		filtered_items = {
 			hide_dotfiles = false,
@@ -62,4 +81,6 @@ require("neo-tree").setup({
 			[">"] = "next_source",
 		},
 	},
-})
+}
+
+neotree.setup(opts)
