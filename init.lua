@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("fallback")
+-- vim.cmd.colorscheme("fallback")
 local utils = require("core.utils")
 
 -- Load globals
