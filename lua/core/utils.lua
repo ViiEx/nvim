@@ -3,6 +3,10 @@ local M = {}
 local merge_tb = vim.tbl_deep_extend
 M.user_terminals = {}
 
+M.HL = function(name, val)
+	vim.api.nvim_set_hl(0, name, val)
+end
+
 M.load_mappings = function(section, mapping_opt)
 	local function set_section_map(section_values)
 		if section_values.plugin then
