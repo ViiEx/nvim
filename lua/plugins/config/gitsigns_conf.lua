@@ -6,12 +6,6 @@ if not present then
 end
 
 local utils = require("core.utils")
-local HL = utils.HL
-
-HL("DiffAdd", { foreground = "#79DCAA" })
-HL("DiffChange", { foreground = "#C397D8" })
-HL("DiffDelete", { foreground = "#F87070" })
-HL("DiffText", { foreground = "#7AB0DF" })
 
 local options = {
 	signs = {
