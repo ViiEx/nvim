@@ -1,15 +1,13 @@
--- vim.cmd.colorscheme("fallback")
 local utils = require("core.utils")
 
--- Load globals
 require("globals")
-
 require("options")
-
 require("plugins")
 require("autocmds")
 
 utils.load_mappings("general", { buffer = bufnr })
+
+vim.cmd.colorscheme("fallback")
 
 vim.ui.select = require("lspactions").select
 vim.ui.input = require("lspactions").input
