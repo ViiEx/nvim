@@ -86,6 +86,14 @@ require("lazy").setup({
 			require("plugins.config.hlslens_conf")
 		end,
 	},
+	{
+		"dharmx/colo.nvim",
+		dependencies = { "b0o/incline.nvim" },
+		config = function()
+			require("plugins.config.colo_conf")
+		end,
+		dev = true,
+	},
 	-- END: UI
 
 	-- START: LSP
@@ -248,5 +256,15 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"matze/vim-move",
+	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("plugins.config.todo")
+		end,
+	},
 	-- END: Utility
+}, {
+	dev = {
+		path = "~/Documents/nvim-plugs",
+	},
 })
