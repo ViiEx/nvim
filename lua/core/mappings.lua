@@ -286,6 +286,9 @@ M.telescope = {
 
 		-- theme switcher
 		["<leader>th"] = { "<cmd> ColoTele <CR>", "Change theme" },
+
+		-- File Browser
+		["<C-\\>"] = { "<CMD> Telescope file_browser <CR> ", "Telescope file browser" },
 	},
 }
 

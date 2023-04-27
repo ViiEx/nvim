@@ -251,12 +251,6 @@ local config = {
 	},
 }
 
---[[ local scanned = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/plugins/config/extensions")
-config.extensions = {}
-for _, file in ipairs(scanned) do
-	local name = vim.fn.fnamemodify(file, ":r")
-	config.extensions[name] = require("plugins.config.extensions." .. name)
-end ]]
 tele.setup(config)
 
 -- vim:filetype=lua

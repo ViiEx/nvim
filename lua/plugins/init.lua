@@ -272,6 +272,16 @@ require("lazy").setup({
 		keys = { "<leader>i" },
 		dev = true,
 	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("telescope").load_extension("file_browser")
+		end,
+	},
 	-- END: Telescope
 
 	-- START: Utility
