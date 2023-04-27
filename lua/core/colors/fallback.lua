@@ -1,8 +1,5 @@
 -- NOTE: This file is used to overide the colorscheme and to add new Highlights.
 
-vim.g.colors_name = "fallback"
-vim.o.background = "dark"
-
 local c = require("core.colo.theme.radium")
 
 local HL = require("core.utils").HL
