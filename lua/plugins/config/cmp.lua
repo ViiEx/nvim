@@ -115,6 +115,7 @@ local options = {
 		}),
 	},
 	sources = {
+		{ name = "copilot", group_index = 2 },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
