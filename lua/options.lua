@@ -41,6 +41,11 @@ set.undofile = true
 set.whichwrap:append("<>[]hl")
 set.shortmess:append("sI")
 
+-- Copilot
+g.copilot_no_tab_map = true
+g.copilot_assume_mapped = true
+g.copilot_tab_fallback = ""
+
 g.mapleader = " "
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

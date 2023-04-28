@@ -95,7 +95,12 @@ local options = {
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 			else
-				fallback()
+				local copilot_keys = vim.fn["copilot#Accept"]()
+				if copilot_keys ~= "" then
+					vim.api.nvim_feedkeys(copilot_keys, "i", true)
+				else
+					fallback()
+				end
 			end
 		end, {
 			"i",
@@ -115,7 +120,6 @@ local options = {
 		}),
 	},
 	sources = {
-		{ name = "copilot", group_index = 2 },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },

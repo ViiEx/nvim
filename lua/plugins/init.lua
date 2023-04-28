@@ -172,13 +172,6 @@ require("lazy").setup({
 	},
 	"hrsh7th/cmp-nvim-lsp-document-symbol",
 	"hrsh7th/cmp-nvim-lsp-signature-help",
-	{
-		"zbirenbaum/copilot-cmp",
-		dependencies = { "github/copilot.vim" },
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
 	-- END: Completion
 
 	-- START: Formatting
@@ -234,15 +227,7 @@ require("lazy").setup({
 			require("plugins.config.neogen_conf")
 		end,
 	},
-	{
-		"zbirenbaum/copilot.lua",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
+	{ "github/copilot.vim" },
 	-- END: Dev Plugins
 
 	-- START: Telescope
