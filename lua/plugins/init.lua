@@ -279,5 +279,17 @@ require("lazy").setup({
 			require("plugins.config.todo")
 		end,
 	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.config.chat-gpt")
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 	-- END: Utility
 }, opts)
