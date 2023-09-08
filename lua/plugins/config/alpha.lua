@@ -32,7 +32,7 @@ local heading = {
 
 local plugin_count = {
 	type = "text",
-	val = "└─   " .. plugins .. " plugins in total ─┘",
+	val = "└─ 󰏖  " .. plugins .. " plugins in total ─┘",
 	opts = {
 		position = "center",
 		hl = "AlphaFooter",

@@ -195,7 +195,7 @@ component.lsp = {
 				local content = string.format("%%<%s", spinners[frame + 1])
 				return content or ""
 			else
-				return "לּ LSP"
+				return "󰘽 LSP"
 			end
 		end
 		return ""

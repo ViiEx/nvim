@@ -16,7 +16,7 @@ local options = {
 		},
 		delete = {
 			hl = "DiffDelete",
-			text = "",
+			text = "󰍵",
 		},
 		topdelete = {
 			hl = "DiffDelete",

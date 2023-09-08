@@ -21,8 +21,8 @@ lspsaga.setup({
 		expand = "",
 		collapse = "",
 		code_action = "💡",
-		incoming = " ",
-		outgoing = " ",
+		incoming = "󰏷 ",
+		outgoing = "󰏻 ",
 		hover = " ",
 		kind = {
 			["Folder"] = { " ", "@comment" },
