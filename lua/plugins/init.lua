@@ -3,6 +3,12 @@
 ---------------------------------
 require("bootstrap.lazy-manager")
 
+local opts = {
+	dev = {
+		path = "~/Documents/nvim-plugs",
+	},
+}
+
 require("lazy").setup({
 	-- START: UI
 	{
@@ -59,23 +65,10 @@ require("lazy").setup({
 			require("plugins.config.neo-tree")
 		end,
 	},
-	--[[ {
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("plugins.config.lualine")
-		end,
-	}, ]]
 	{
 		"freddiehaddad/feline.nvim",
 		config = function()
 			require("plugins.config.feline_conf")
-		end,
-	},
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = { "kevinhwang91/promise-async" },
-		config = function()
-			require("plugins.config.ufo")
 		end,
 	},
 	{
@@ -98,6 +91,14 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.hlslens_conf")
 		end,
+	},
+	{
+		"dharmx/colo.nvim",
+		dependencies = { "b0o/incline.nvim" },
+		config = function()
+			require("plugins.config.colo_conf")
+		end,
+		dev = true,
 	},
 	-- END: UI
 
@@ -226,6 +227,7 @@ require("lazy").setup({
 			require("plugins.config.neogen_conf")
 		end,
 	},
+	{ "github/copilot.vim" },
 	-- END: Dev Plugins
 
 	-- START: Telescope
@@ -255,11 +257,39 @@ require("lazy").setup({
 		keys = { "<leader>i" },
 		dev = true,
 	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("telescope").load_extension("file_browser")
+		end,
+	},
 	-- END: Telescope
 
 	-- START: Utility
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"matze/vim-move",
+	{
+		"folke/todo-comments.nvim",
+		config = function()
+			require("plugins.config.todo")
+		end,
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.config.chat-gpt")
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 	-- END: Utility
-})
+}, opts)

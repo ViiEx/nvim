@@ -160,16 +160,7 @@ M.lspconfig = {
 			"lsp definition",
 		},
 
-		["K"] = {
-			function()
-				local winid = require("ufo").peekFoldedLinesUnderCursor()
-				if not winid then
-					-- choose one of coc.nvim and nvim lsp
-					vim.cmd([[Lspsaga hover_doc]])
-				end
-			end,
-			"lsp hover",
-		},
+		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover Documentation" },
 
 		["gi"] = {
 			function()
@@ -295,6 +286,9 @@ M.telescope = {
 
 		-- theme switcher
 		["<leader>th"] = { "<cmd> ColoTele <CR>", "Change theme" },
+
+		-- File Browser
+		["<C-\\>"] = { "<CMD> Telescope file_browser <CR> ", "Telescope file browser" },
 	},
 }
 

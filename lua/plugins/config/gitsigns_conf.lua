@@ -9,11 +9,23 @@ local utils = require("core.utils")
 
 local options = {
 	signs = {
-		add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-		change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-		delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-		topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-		changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+		add = { texthl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+		change = {
+			hl = "DiffChange",
+			text = "│",
+		},
+		delete = {
+			hl = "DiffDelete",
+			text = "󰍵",
+		},
+		topdelete = {
+			hl = "DiffDelete",
+			text = "‾",
+		},
+		changedelete = {
+			hl = "DiffChangeDelete",
+			text = "~",
+		},
 		untracked = { hl = "DiffUntracked", text = "┆", numhl = "GitSignsUntrackedNr" },
 	},
 	current_line_blame = false,

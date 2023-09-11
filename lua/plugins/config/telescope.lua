@@ -27,7 +27,7 @@ local config = {
 	pickers = {
 		buffers = {
 			sort_lastused = true,
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰀿  ",
 			previewer = false,
 			layout_config = {
 				width = 0.3,
@@ -57,17 +57,17 @@ local config = {
 			},
 		},
 		oldfiles = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰋚  ",
 			theme = "ivy",
 			previewer = false,
 		},
 		colorscheme = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰏙  ",
 			previewer = false,
 			theme = "ivy",
 		},
 		highlights = {
-			prompt_prefix = " קּ  ",
+			prompt_prefix = " 󰙈  ",
 		},
 		live_grep = {
 			prompt_prefix = "   ",
@@ -88,16 +88,16 @@ local config = {
 			},
 		},
 		git_commits = {
-			prompt_prefix = " ﰖ  ",
+			prompt_prefix = " 󰜘  ",
 		},
 		git_bcommits = {
-			prompt_prefix = " ﰖ  ",
+			prompt_prefix = " 󰜘  ",
 		},
 		git_branches = {
-			prompt_prefix = " שׂ  ",
+			prompt_prefix = " 󰘬  ",
 		},
 		git_status = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰊢  ",
 			git_icons = {
 				added = "+",
 				changed = "~",
@@ -109,10 +109,10 @@ local config = {
 			},
 		},
 		git_files = {
-			prompt_prefix = " שׂ  ",
+			prompt_prefix = " 󰘬  ",
 		},
 		commands = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰆿  ",
 			theme = "dropdown",
 			layout_config = {
 				height = 0.7,
@@ -120,18 +120,18 @@ local config = {
 			},
 		},
 		registers = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰅌  ",
 			theme = "ivy",
 		},
 		spell_suggests = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰄭  ",
 			theme = "ivy",
 			layout_config = {
 				height = 15,
 			},
 		},
 		keymaps = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰁲  ",
 			theme = "ivy",
 			layout_config = {
 				height = 10,
@@ -142,15 +142,15 @@ local config = {
 			theme = "cursor",
 		},
 		lsp_references = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰌹  ",
 			theme = "ivy",
 		},
 		lsp_implementations = {
-			prompt_prefix = "   ",
+			prompt_prefix = " 󰗼  ",
 			theme = "ivy",
 		},
 		lsp_document_diagnostics = {
-			prompt_prefix = " 律 ",
+			prompt_prefix = " 󰓙 ",
 			theme = "ivy",
 		},
 	},
@@ -249,14 +249,13 @@ local config = {
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
+	extensions = {
+		file_browser = {
+			grouped = true,
+		},
+	},
 }
 
---[[ local scanned = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/plugins/config/extensions")
-config.extensions = {}
-for _, file in ipairs(scanned) do
-	local name = vim.fn.fnamemodify(file, ":r")
-	config.extensions[name] = require("plugins.config.extensions." .. name)
-end ]]
 tele.setup(config)
 
 -- vim:filetype=lua

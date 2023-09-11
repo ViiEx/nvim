@@ -38,7 +38,7 @@ local options = {
 		indicator = {
 			style = "none",
 		},
-		buffer_close_icon = "",
+		buffer_close_icon = "󰅖",
 		modified_icon = "",
 		close_icon = "X",
 		left_trunc_marker = "",

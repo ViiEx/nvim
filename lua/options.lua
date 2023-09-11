@@ -7,12 +7,12 @@ set.completeopt = "noinsert,menuone,noselect"
 set.cursorline = true
 set.expandtab = true
 set.foldexpr = "nvim_treesitter#foldexpr()"
-set.foldmethod = "manual"
-set.foldcolumn = "1"
+set.foldmethod = "expr"
+-- set.foldcolumn = "1"
 set.foldlevel = 99
 set.foldlevelstart = 99
 set.foldenable = true
-set.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+set.fillchars = [[eob: ]]
 set.hidden = true
 set.inccommand = "split"
 set.mouse = "a"
@@ -40,6 +40,11 @@ set.smartcase = true
 set.undofile = true
 set.whichwrap:append("<>[]hl")
 set.shortmess:append("sI")
+
+-- Copilot
+g.copilot_no_tab_map = true
+g.copilot_assume_mapped = true
+g.copilot_tab_fallback = ""
 
 g.mapleader = " "
 

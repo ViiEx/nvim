@@ -51,7 +51,7 @@ There are many different banners taken from `KrakeNvim` that can be found at `./
 
 In order to change the banner for Dashboard I have created a small telescope picker that lists and previews
 all the banners. To use it type `<leader>cb` and select the banner you like. After that the next time you
-open NeoVim the new banner will great you.
+open NeoVim the new banner will greet you.
 
 I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
 
@@ -61,9 +61,12 @@ Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, ~~Lualine~~
 
 The config includes by default `hovered diagnostics` cause they are so much more easier to read for me
 so if you don't prefer it that way you can disable it
-by commenting out the `autocmd` command in the file `./lua/autocmds.lua`
+by commenting out the `autocmd` in the `./lua/plugins/init.lua` file under the `lspsaga` plugin.
 
 I have telescope with emojis enabled cause I like using them as well.
+
+I don't have any plugin (at the moment) for theme, I have customly edit the highlight variables of NeoVim
+and all the plugins I use. Basically the theme here is the file `./colors/fallback.lua` but more about that below.
 
 Finally I don't use `Which-key` since I remember my keybindings but you can easily install it to help you.
 
@@ -159,19 +162,31 @@ M.whichkey = {
 -- ....
 ```
 
+## Theme
+
+So few words for the theme. As I wrote above the theme is basically the file `./colors/fallback.lua`.
+That has both benefits and disadvantages at the same time.
+
+Let me explain.
+
+The possitive aspect is that this way I have full control of the colors that I use and how they blend.
+Meaning I can change any highlight value on the spot, that's cool but...
+
+That creates an issue or two.
+
+To be more specific my problems with this method is that I have a huge file that is the theme, if I want to
+change the colors to something like nord or gruvbox pallet it is gonna be a hastle and everytime I add a new plugin
+in case it uses highlights that I haven't specified I will have to add them to the file.
+
+Currently I have copied [dharmx](https://github.com/dharmx/nvim) way of doing few staff like the `HL` function
+and few `Color` functions from his plugin that you can find [here](https://github.com/dharmx/colo.nvim).
+
+At the end of the day my goal is to actually implement his `colo.nvim` here but as of the day I'm writting this
+docs it is not ready yet.
+
 ## Showcase
 
-![Screenshot_2](./assets/Screenshot_from_2023-02-03_14-00-31.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-01-59.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-03-28.png)
-
-![Screenshot_1](./assets/Screenshot_from_2023-02-03_14-26-35.png)
-
-## Few things
-
-I'm using a nice plugin for **UI** like code folding that adds an arrow besides the line numbers.\
-You will notice that you also find some numbers in some cases along with it (you can see them in the screenshots as well).
-The only way as of now to stop that from happening is by compiling neovim yourself with a small patch.
-If you are intersed in that you can check [this](https://github.com/kevinhwang91/nvim-ufo/issues/4#issuecomment-1157722074) issue.
+![Screenshot_1](./assets/2023-04-20_16-29.png)
+![Screenshot_2](./assets/2023-04-20_16-30.png)
+![Screenshot_3](./assets/2023-04-20_16-31.png)
+![Screenshot_4](./assets/2023-04-20_16-31_1.png)
