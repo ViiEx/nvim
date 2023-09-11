@@ -205,3 +205,6 @@ both cases make sure to use the `feature/neotree` branch.
 | \<leader\>gdh | Diff view file history      | **_n_**  |
 | \<leader\>cb  | Set banner                  | **_n_**  |
 | \<C-x\>       | escape terminal mode        | **_t_**  |
+
+For even more key mappings use `<leader>tk` to open up telescope with
+the list of all keymaps.
