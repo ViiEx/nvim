@@ -174,34 +174,37 @@ both cases make sure to use the `feature/neotree` branch.
 
 ## Default (basic) keybindings
 
-| **Keybind** | **Description**             | **Mode** |
-| ----------- | --------------------------- | -------- |
-| <C-b>       | Go to the beginning of line | **_i_**  |
-| <C-e>       | Got to the end of line      | **_i_**  |
-| <C-h>       | move left                   | **_i_**  |
-| <C-l>       | move right                  | **_i_**  |
-| <C-j>       | move down                   | **_i_**  |
-| <C-k>       | move up`                    | **_i_**  |
-| <C-h>       | window left                 | **_n_**  |
-| <C-l>       | window right                | **_n_**  |
-| <C-j>       | window down                 | **_n_**  |
-| <C-k>       | window up                   | **_n_**  |
-| <C-s>       | save file                   | **_n_**  |
-| <C-c>       | copy whole file             | **_n_**  |
-| <leader>b   | new buffer                  | **_n_**  |
-| <C-n>       | Open File tree              | **_n_**  |
-| <leader>fe  | emoji explorer              | **_n_**  |
-| <leader>gg  | ToggleTerm lazygit          | **_n_**  |
-| <C-`>       | ToggleTerm horizontal split | **_n_**  |
-| <leader>tt  | ToggleTerm horizontal split | **_n_**  |
-| <a-cr>      | Code Action                 | **_n_**  |
-| <leader>lr  | Lsp Rename                  | **_n_**  |
-| <leader>lf  | Open floating diagnostics   | **_n_**  |
-| <C-/>       | Comment toggle linewise     | **_n_**  |
-| <TAB>       | goto next buffer            | **_n_**  |
-| <S-Tab>     | goto prev buffer            | **_n_**  |
-| <leader>x   | close buffer                | **_n_**  |
-| <leader>ta  | Toggle aerial               | **_n_**  |
-| <leader>gdh | Diff view file history      | **_n_**  |
-| <leader>cb  | Set banner                  | **_n_**  |
-| <C-x>       | escape terminal mode        | **_t_**  |
+| **Keybind**   | **Description**             | **Mode** |
+| ------------- | --------------------------- | -------- |
+| \<C-b\>       | Go to the beginning of line | **_i_**  |
+| \<C-e\>       | Got to the end of line      | **_i_**  |
+| \<C-h\>       | move left                   | **_i_**  |
+| \<C-l\>       | move right                  | **_i_**  |
+| \<C-j\>       | move down                   | **_i_**  |
+| \<C-k\>       | move up`                    | **_i_**  |
+| \<C-h\>       | window left                 | **_n_**  |
+| \<C-l\>       | window right                | **_n_**  |
+| \<C-j\>       | window down                 | **_n_**  |
+| \<C-k\>       | window up                   | **_n_**  |
+| \<C-s\>       | save file                   | **_n_**  |
+| \<C-c\>       | copy whole file             | **_n_**  |
+| \<leader\>b   | new buffer                  | **_n_**  |
+| \<C-n\>       | Open File tree              | **_n_**  |
+| \<leader\>fe  | emoji explorer              | **_n_**  |
+| \<leader\>gg  | ToggleTerm lazygit          | **_n_**  |
+| <C-`>         | ToggleTerm horizontal split | **_n_**  |
+| \<leader\>tt  | ToggleTerm horizontal split | **_n_**  |
+| \<a-cr\>      | Code Action                 | **_n_**  |
+| \<leader\>lr  | Lsp Rename                  | **_n_**  |
+| \<leader\>lf  | Open floating diagnostics   | **_n_**  |
+| \<C-/\>       | Comment toggle linewise     | **_n_**  |
+| \<TAB\>       | goto next buffer            | **_n_**  |
+| \<S-Tab\>     | goto prev buffer            | **_n_**  |
+| \<leader\>x   | close buffer                | **_n_**  |
+| \<leader\>ta  | Toggle aerial               | **_n_**  |
+| \<leader\>gdh | Diff view file history      | **_n_**  |
+| \<leader\>cb  | Set banner                  | **_n_**  |
+| \<C-x\>       | escape terminal mode        | **_t_**  |
+
+For even more key mappings use `<leader>tk` to open up telescope with
+the list of all keymaps.
