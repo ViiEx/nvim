@@ -65,9 +65,6 @@ by commenting out the `autocmd` in the `./lua/plugins/init.lua` file under the `
 
 I have telescope with emojis enabled cause I like using them as well.
 
-I don't have any plugin (at the moment) for theme, I have customly edit the highlight variables of NeoVim
-and all the plugins I use. Basically the theme here is the file `./colors/fallback.lua` but more about that below.
-
 Finally I don't use `Which-key` since I remember my keybindings but you can easily install it to help you.
 
 ### Small guide to use Which-key
@@ -164,25 +161,9 @@ M.whichkey = {
 
 ## Theme
 
-So few words for the theme. As I wrote above the theme is basically the file `./colors/fallback.lua`.
-That has both benefits and disadvantages at the same time.
-
-Let me explain.
-
-The possitive aspect is that this way I have full control of the colors that I use and how they blend.
-Meaning I can change any highlight value on the spot, that's cool but...
-
-That creates an issue or two.
-
-To be more specific my problems with this method is that I have a huge file that is the theme, if I want to
-change the colors to something like nord or gruvbox pallet it is gonna be a hastle and everytime I add a new plugin
-in case it uses highlights that I haven't specified I will have to add them to the file.
-
-Currently I have copied [dharmx](https://github.com/dharmx/nvim) way of doing few staff like the `HL` function
-and few `Color` functions from his plugin that you can find [here](https://github.com/dharmx/colo.nvim).
-
-At the end of the day my goal is to actually implement his `colo.nvim` here but as of the day I'm writting this
-docs it is not ready yet.
+For theme I use my fork of colo.nvim that you can clone under the `dev`
+forlder for lazy or use it as any normal plugin (`ViiEx/colo.nvim`) but in
+both cases make sure to use the `feature/neotree` branch.
 
 ## Showcase
 
@@ -190,3 +171,37 @@ docs it is not ready yet.
 ![Screenshot_2](./assets/2023-04-20_16-30.png)
 ![Screenshot_3](./assets/2023-04-20_16-31.png)
 ![Screenshot_4](./assets/2023-04-20_16-31_1.png)
+
+## Default (basic) keybindings
+
+| **Keybind** | **Description**             | **Mode** |
+| ----------- | --------------------------- | -------- |
+| <C-b>       | Go to the beginning of line | **_i_**  |
+| <C-e>       | Got to the end of line      | **_i_**  |
+| <C-h>       | move left                   | **_i_**  |
+| <C-l>       | move right                  | **_i_**  |
+| <C-j>       | move down                   | **_i_**  |
+| <C-k>       | move up`                    | **_i_**  |
+| <C-h>       | window left                 | **_n_**  |
+| <C-l>       | window right                | **_n_**  |
+| <C-j>       | window down                 | **_n_**  |
+| <C-k>       | window up                   | **_n_**  |
+| <C-s>       | save file                   | **_n_**  |
+| <C-c>       | copy whole file             | **_n_**  |
+| <leader>b   | new buffer                  | **_n_**  |
+| <C-n>       | Open File tree              | **_n_**  |
+| <leader>fe  | emoji explorer              | **_n_**  |
+| <leader>gg  | ToggleTerm lazygit          | **_n_**  |
+| <C-`>       | ToggleTerm horizontal split | **_n_**  |
+| <leader>tt  | ToggleTerm horizontal split | **_n_**  |
+| <a-cr>      | Code Action                 | **_n_**  |
+| <leader>lr  | Lsp Rename                  | **_n_**  |
+| <leader>lf  | Open floating diagnostics   | **_n_**  |
+| <C-/>       | Comment toggle linewise     | **_n_**  |
+| <TAB>       | goto next buffer            | **_n_**  |
+| <S-Tab>     | goto prev buffer            | **_n_**  |
+| <leader>x   | close buffer                | **_n_**  |
+| <leader>ta  | Toggle aerial               | **_n_**  |
+| <leader>gdh | Diff view file history      | **_n_**  |
+| <leader>cb  | Set banner                  | **_n_**  |
+| <C-x>       | escape terminal mode        | **_t_**  |
