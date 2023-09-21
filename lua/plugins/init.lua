@@ -139,6 +139,7 @@ require("lazy").setup({
 	"folke/neodev.nvim",
 	{
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		config = function()
 			require("plugins.config.fidget_conf")
 		end,
