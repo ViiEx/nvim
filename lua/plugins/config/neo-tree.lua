@@ -7,7 +7,7 @@ end
 local icons = require("core.icons")
 
 local opts = {
-	close_if_last_window = false,
+	close_if_last_window = true,
 	enable_diagnostics = false,
 	enable_git_status = true,
 	popup_border_style = "rounded",
