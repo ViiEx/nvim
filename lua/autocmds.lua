@@ -24,3 +24,11 @@ local autoCommands = {
 }
 
 M.nvim_create_augroups(autoCommands)
+
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd({ "UIEnter" }, {
+	callback = function()
+		require("core.statusline").setup()
+	end,
+})
