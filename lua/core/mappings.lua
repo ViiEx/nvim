@@ -375,4 +375,17 @@ M.gitsigns = {
 	},
 }
 
+M.flog = {
+	plugin = true,
+
+	n = {
+		["<leader>fl"] = {
+			"<CMD>Flogsplit<CR>",
+			"Toggle flog",
+		},
+	},
+}
+
+vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])
+
 return M

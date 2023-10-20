@@ -65,12 +65,12 @@ require("lazy").setup({
 			require("plugins.config.neo-tree")
 		end,
 	},
-	{
-		"freddiehaddad/feline.nvim",
-		config = function()
-			require("plugins.config.feline_conf")
-		end,
-	},
+	-- {
+	-- 	"freddiehaddad/feline.nvim",
+	-- 	config = function()
+	-- 		require("plugins.config.feline_conf")
+	-- 	end,
+	-- },
 	{
 		"yamatsum/nvim-cursorline",
 		config = function()
@@ -229,6 +229,12 @@ require("lazy").setup({
 		end,
 	},
 	{ "github/copilot.vim" },
+	{
+		"rbong/vim-flog",
+		dependencies = {
+			"tpope/vim-fugitive",
+		},
+	},
 	-- END: Dev Plugins
 
 	-- START: Telescope
