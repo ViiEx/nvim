@@ -81,7 +81,7 @@ M.general = {
 		["<C-`>"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "ToggleTerm horizontal split" },
 		["<leader>tt"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "ToggleTerm horizontal split" },
 
-		["<a-cr>"] = { "<cmd>lua require'lspactions'.code_action()<cr>", "Code Action", opts = { silent = true } },
+		["<a-cr>"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Code Action", opts = { silent = true } },
 		["<leader>lr"] = { "<cmd>lua require'lspactions'.rename()<cr>", "Rename", opts = { silent = true } },
 
 		["<leader>lf"] = {
@@ -382,6 +382,17 @@ M.flog = {
 		["<leader>fl"] = {
 			"<CMD>Flogsplit<CR>",
 			"Toggle flog",
+		},
+	},
+}
+
+M.mini = {
+	plugin = true,
+
+	n = {
+		["<leader>mf"] = {
+			"<CMD>lua MiniFiles.open()<CR>",
+			"Toggle Mini Files",
 		},
 	},
 }
