@@ -100,6 +100,31 @@ require("lazy").setup({
 		end,
 		dev = true,
 	},
+	{
+		"echasnovski/mini.nvim",
+		version = "*",
+		config = function()
+			require("plugins.config.mini_conf")
+			require("core.utils").load_mappings("mini")
+		end,
+	},
+	-- Breadcrumb plugin
+	{
+		"Bekaboo/dropbar.nvim",
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
+		config = function()
+			local status_ok, dropbar = pcall(require, "dropbar")
+
+			if not status_ok then
+				return
+			end
+
+			dropbar.setup()
+		end,
+	},
 	-- END: UI
 
 	-- START: LSP
@@ -158,6 +183,9 @@ require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-nvim-lua",
+	"hrsh7th/cmp-emoji",
+	"chrisgrieser/cmp-nerdfont",
+	"max397574/cmp-greek",
 	{
 		"L3MON4D3/LuaSnip",
 		config = function()
@@ -273,6 +301,9 @@ require("lazy").setup({
 		config = function()
 			require("telescope").load_extension("file_browser")
 		end,
+	},
+	{
+		"danielvolchek/tailiscope.nvim",
 	},
 	-- END: Telescope
 

@@ -28,4 +28,7 @@ lspsaga.setup({
 			["Folder"] = { " ", "@comment" },
 		},
 	},
+	symbol_in_winbar = {
+		enable = false,
+	},
 })
