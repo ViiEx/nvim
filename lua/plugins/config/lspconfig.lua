@@ -18,6 +18,11 @@ M.on_attach = function(client, bufnr)
 	if client.server_capabilities.signatureHelpProvider then
 		require("core.signatures").setup(client)
 	end
+
+	if client.name == "tailwindcss" then
+		require("telescope").load_extension("tailiscope")
+		vim.keymap.set("n", "<leader>tw", "<cmd>Telescope tailiscope<cr>")
+	end
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -120,13 +125,13 @@ lspconfig.intelephense.setup({
 
 -- Configure Angular
 -- NVM Version
--- local cwd = vim.fn.expand("$HOME/.nvm/versions/node/$VER/lib/node_modules/@angular/language-server")
+local cwd = vim.fn.expand("$HOME/.nvm/versions/node/v20.9.0/lib/node_modules/@angular/language-server")
 -- Node from package manager version
 -- local cwd = vim.fn.expand("/usr/local/lib/node_modules/@angular/language-server")
 -- FNM Version
-local cwd = vim.fn.expand(
-	"$HOME/.local/share/fnm/node-versions/v18.12.1/installation/lib/node_modules/@angular/language-server"
-)
+-- local cwd = vim.fn.expand(
+-- 	"$HOME/.local/share/fnm/node-versions/v18.12.1/installation/lib/node_modules/@angular/language-server"
+-- )
 local project_library_path = cwd
 local cmd =
 	{ "ngserver", "--stdio", "--tsProbeLocations", project_library_path, "--ngProbeLocations", project_library_path }
