@@ -127,6 +127,10 @@ require("lazy").setup({
 	},
 	-- END: UI
 
+	-- START: THEMES
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	-- END: THEMES
+
 	-- START: LSP
 	{
 		"neovim/nvim-lspconfig",
@@ -274,6 +278,7 @@ require("lazy").setup({
 		end,
 		config = function()
 			require("plugins.config.telescope")
+			require("telescope._extensions.theme-selector.init")
 		end,
 	},
 	"nvim-telescope/telescope-symbols.nvim",

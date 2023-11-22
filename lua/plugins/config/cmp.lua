@@ -40,6 +40,7 @@ cmp_window.info = function(self)
 end
 
 local options = {
+	preselect = cmp.PreselectMode.None,
 	window = {
 		completion = {
 			side_padding = 0,

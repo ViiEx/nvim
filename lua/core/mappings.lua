@@ -142,6 +142,13 @@ M.general = {
 			"Set banners",
 			opts = { silent = true },
 		},
+		["<leader>cc"] = {
+			function()
+				require("core.theme-selector").set_theme()
+			end,
+			"Set theme",
+			opts = { silent = true },
+		},
 	},
 
 	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "Escape terminal mode" } },
