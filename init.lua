@@ -4,7 +4,7 @@ require("globals")
 require("options")
 require("plugins")
 require("autocmds")
-require("core.colors.fallback")
+-- require("core.colors.fallback")
 
 utils.load_mappings("general", { buffer = bufnr })
 

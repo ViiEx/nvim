@@ -41,5 +41,17 @@ local files_options = {
 	},
 }
 
+local indent_options = {
+	symbol = "▎",
+}
+
+-- Set vim.g.miniindentscope_disable = true when buffer is terminal or help or aplha
+vim.cmd([[
+augroup miniindentscope
+  autocmd!
+  autocmd BufEnter * if &buftype == 'terminal' || &buftype == 'help' || &buftype == 'acwrite' || &buftype == 'prompt' || &buftype == 'quickfix' || &buftype == 'nofile' || &buftype == 'nowrite' | let g:miniindentscope_disable = v:true | else | let g:miniindentscope_disable = v:false | endif
+]])
+
 require("mini.animate").setup(animate_options)
 require("mini.files").setup(files_options)
+require("mini.indentscope").setup(indent_options)

@@ -92,12 +92,12 @@ M.general = {
 		["<C-/>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle linewise" },
 
 		["<TAB>"] = {
-			"<cmd>BufferLineCycleNext<cr>",
+			"<Plug>(cokeline-focus-next)",
 			"Goto next buffer",
 		},
 
 		["<S-Tab>"] = {
-			"<cmd>BufferLineCyclePrev<cr>",
+			"<Plug>(cokeline-focus-prev)",
 			"Goto prev buffer",
 		},
 		["<leader>x"] = {
@@ -140,13 +140,6 @@ M.general = {
 				require("core.utils").set_banners()
 			end,
 			"Set banners",
-			opts = { silent = true },
-		},
-		["<leader>cc"] = {
-			function()
-				require("core.theme-selector").set_theme()
-			end,
-			"Set theme",
 			opts = { silent = true },
 		},
 	},
@@ -400,6 +393,17 @@ M.mini = {
 		["<leader>mf"] = {
 			"<CMD>lua MiniFiles.open()<CR>",
 			"Toggle Mini Files",
+		},
+	},
+}
+
+M.norg = {
+	plugin = true,
+
+	n = {
+		["<leader>nn"] = {
+			"<CMD>Neorg keybind norg core.dirman.new.note<CR>",
+			"Create new note",
 		},
 	},
 }

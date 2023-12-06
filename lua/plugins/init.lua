@@ -45,18 +45,16 @@ require("lazy").setup({
 			require("plugins.config.toggleterm")
 		end,
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("plugins.config.blankline")
-		end,
-	},
 	"MunifTanjim/nui.nvim",
 	"nvim-lua/popup.nvim",
 	{
-		"akinsho/bufferline.nvim",
+		"willothy/nvim-cokeline",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for v0.4.0+
+			"kyazdani42/nvim-web-devicons", -- If you want devicons
+		},
 		config = function()
-			require("plugins.config.buffer-line")
+			require("plugins.config.cokeline_conf")
 		end,
 	},
 	{
@@ -65,12 +63,6 @@ require("lazy").setup({
 			require("plugins.config.neo-tree")
 		end,
 	},
-	-- {
-	-- 	"freddiehaddad/feline.nvim",
-	-- 	config = function()
-	-- 		require("plugins.config.feline_conf")
-	-- 	end,
-	-- },
 	{
 		"yamatsum/nvim-cursorline",
 		config = function()
@@ -91,14 +83,6 @@ require("lazy").setup({
 		config = function()
 			require("plugins.config.hlslens_conf")
 		end,
-	},
-	{
-		"dharmx/colo.nvim",
-		dependencies = { "b0o/incline.nvim" },
-		config = function()
-			require("plugins.config.colo_conf")
-		end,
-		dev = true,
 	},
 	{
 		"echasnovski/mini.nvim",
@@ -126,10 +110,6 @@ require("lazy").setup({
 		end,
 	},
 	-- END: UI
-
-	-- START: THEMES
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	-- END: THEMES
 
 	-- START: LSP
 	{
@@ -278,7 +258,6 @@ require("lazy").setup({
 		end,
 		config = function()
 			require("plugins.config.telescope")
-			require("telescope._extensions.theme-selector.init")
 		end,
 	},
 	"nvim-telescope/telescope-symbols.nvim",
@@ -323,16 +302,23 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("plugins.config.chat-gpt")
+			require("plugins.config.neorg_conf")
+			require("core.utils").load_mappings("norg")
 		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
 	},
 	-- END: Utility
+
+	-- START: Colotscheme
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("plugins.config.kanagawa_conf")
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
+	-- END: Colorscheme
 }, opts)
