@@ -50,7 +50,7 @@ to keep it up to date with the latest and greatest plugins and features.
 Do expect some breaking changes from time to time but I'll try to keep
 them to a minimum as I occasionally look what other people have done to
 get inspiration (and steal code). If you clone this config you may find
-it looking quite different from whta the screenshots display below.
+it looking quite different from what the screenshots display below.
 
 ## Installation
 
