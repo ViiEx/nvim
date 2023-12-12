@@ -40,6 +40,7 @@ set.smartcase = true
 set.undofile = true
 set.whichwrap:append("<>[]hl")
 set.shortmess:append("sI")
+set.mousemoveevent = true
 
 -- Copilot
 g.copilot_no_tab_map = true

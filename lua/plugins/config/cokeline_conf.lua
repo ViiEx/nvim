@@ -47,7 +47,7 @@ local options = {
 			return buffer.is_focused and "#1D1C19" or "#1D1C19"
 		end,
 		bg = function(buffer)
-			return buffer.is_focused and "#E46876" or "#8992a7"
+			return "#1D1C19"
 		end,
 		sp = nil,
 		bold = function(buffer)
@@ -63,15 +63,13 @@ local options = {
 
 	components = {
 		{
-			text = " ",
-			bg = "#16161D",
-		},
-		{
 			text = "",
 			fg = function(buffer)
-				return buffer.is_focused and "#E46876" or "#8992a7"
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
 			end,
-			bg = "#16161D",
+			bg = function(buffer)
+				return buffer.is_first and "#1D1C19" or "#938AA9"
+			end,
 			style = nil,
 		},
 		{
@@ -79,11 +77,18 @@ local options = {
 				return buffer.devicon.icon
 			end,
 			fg = function(buffer)
-				return buffer.devicon.color
+				-- return buffer.devicon.color
+				return buffer.is_focused and "#DCD7BA" or "#1D1C19"
+			end,
+			bg = function(buffer)
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
 			end,
 		},
 		{
 			text = " ",
+			bg = function(buffer)
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
+			end,
 		},
 		{
 			text = function(buffer)
@@ -92,17 +97,46 @@ local options = {
 			style = function(buffer)
 				return buffer.is_focused and "bold" or nil
 			end,
+			bg = function(buffer)
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
+			end,
+			fg = function(buffer)
+				return buffer.is_focused and "#DCD7BA" or "#1D1C19"
+			end,
 		},
 		{
-			text = "󰅖",
+			text = function(buffer)
+				return buffer.is_modified and " " or ""
+			end,
+			fg = "#98BB6C",
+			bg = function(buffer)
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
+			end,
+		},
+		{
+			text = function(buffer)
+				if buffer.is_hovered then
+					return " 󰅙 "
+				else
+					return " 󰅚 "
+				end
+			end,
 			delete_buffer_on_left_click = true,
+			bg = function(buffer)
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
+			end,
+			fg = function(buffer)
+				return buffer.is_focused and "#DCD7BA" or "#1D1C19"
+			end,
 		},
 		{
 			text = "",
 			fg = function(buffer)
-				return buffer.is_focused and "#E46876" or "#8992a7"
+				return buffer.is_focused and "#7E9CD8" or "#938AA9"
 			end,
-			bg = "#16161D",
+			bg = function(buffer)
+				return buffer.is_last and "#1D1C19" or "#938AA9"
+			end,
 			style = nil,
 		},
 	},
