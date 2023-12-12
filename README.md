@@ -220,10 +220,12 @@ found at `./lua/plugins/config/kanagawa_conf.lua`.
 
 ## Showcase
 
-![Screenshot_1](./assets/2023-04-20_16-29.png)
-![Screenshot_2](./assets/2023-04-20_16-30.png)
-![Screenshot_3](./assets/2023-04-20_16-31.png)
-![Screenshot_4](./assets/2023-04-20_16-31_1.png)
+![Screenshot_1](./assets/Screenshot_from_2023-12-12_16-24-19.png)
+![Screenshot_2](./assets/Screenshot_from_2023-12-12_16-24-41.png)
+![Screenshot_3](./assets/Screenshot_from_2023-12-12_16-25-45.png)
+![Screenshot_4](./assets/Screenshot_from_2023-12-12_16-26-33.png)
+![Screenshot_5](./assets/Screenshot_from_2023-12-12_16-26-53.png)
+![Screenshot_6](./assets/Screenshot_from_2023-12-12_16-27-32.png)
 
 ## Default (basic) keybindings
 
