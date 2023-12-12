@@ -11,47 +11,64 @@ local toggle_term_cmd = require("core.utils").toggle_term_cmd
 M.general = {
 	i = {
 		-- go to  beginning and end
-		["<C-b>"] = { "<ESC>^i", "beginning of line" },
-		["<C-e>"] = { "<End>", "end of line" },
+		["<C-b>"] = { "<ESC>^i", "Beginning of line" },
+		["<C-e>"] = { "<End>", "End of line" },
 
 		-- navigate within insert mode
-		["<C-h>"] = { "<Left>", "move left" },
-		["<C-l>"] = { "<Right>", "move right" },
-		["<C-j>"] = { "<Down>", "move down" },
-		["<C-k>"] = { "<Up>", "move up" },
+		["<C-h>"] = { "<Left>", "Move left" },
+		["<C-l>"] = { "<Right>", "Move right" },
+		["<C-j>"] = { "<Down>", "Move down" },
+		["<C-k>"] = { "<Up>", "Move up" },
 	},
 
 	n = {
-		["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
+		["<ESC>"] = { "<cmd> noh <CR>", "No highlight" },
 
 		-- switch between windows
-		["<C-h>"] = { "<C-w>h", "window left" },
-		["<C-l>"] = { "<C-w>l", "window right" },
-		["<C-j>"] = { "<C-w>j", "window down" },
-		["<C-k>"] = { "<C-w>k", "window up" },
+		["<C-h>"] = { "<C-w>h", "Window left" },
+		["<C-l>"] = { "<C-w>l", "Window right" },
+		["<C-j>"] = { "<C-w>j", "Window down" },
+		["<C-k>"] = { "<C-w>k", "Window up" },
 
 		-- save
-		["<C-s>"] = { "<cmd> w <CR>", opts = { silent = true } },
+		["<C-s>"] = { "<cmd> w <CR>", "Save file", opts = { silent = true } },
 
 		-- Copy all
-		["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
+		["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
 		-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 		-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 		-- empty mode is same as using <cmd> :map
 		-- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+		["j"] = {
+			'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+			"Moving the cursor through wrapped lines down",
+			opts = { expr = true },
+		},
+		["k"] = {
+			'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+			"Moving the cursor through wrapped lines up",
+			opts = { expr = true },
+		},
+		["<Up>"] = {
+			'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+			"Moving the cursor through wrapped lines up",
+			opts = { expr = true },
+		},
+		["<Down>"] = {
+			'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+			"Moving the cursor through wrapped lines down",
+			opts = { expr = true },
+		},
 
 		-- new buffer
-		["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
+		["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 
 		["<C-n>"] = { "<cmd>Neotree toggle<CR>", "Open File tree", opts = { silent = true } },
 
 		["<leader>fe"] = {
 			":lua require'telescope.builtin'.symbols{ sources = {'kaomoji', 'gitmoji'} }<cr>",
+			"Emoji",
 			opts = { silent = true },
 		},
 
@@ -59,35 +76,35 @@ M.general = {
 			function()
 				toggle_term_cmd("lazygit")
 			end,
-			desc = "ToggleTerm lazygit",
+			"ToggleTerm lazygit",
 		},
-		["<C-`>"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
-		["<leader>tt"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
+		["<C-`>"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "ToggleTerm horizontal split" },
+		["<leader>tt"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "ToggleTerm horizontal split" },
 
-		["<a-cr>"] = { "<cmd>lua require'lspactions'.code_action()<cr>", "Code Action", opts = { silent = true } },
+		["<a-cr>"] = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Code Action", opts = { silent = true } },
 		["<leader>lr"] = { "<cmd>lua require'lspactions'.rename()<cr>", "Rename", opts = { silent = true } },
 
 		["<leader>lf"] = {
 			"<cmd>lua vim.diagnostic.open_float()<cr>",
-			desc = "Open floating diagnostics",
+			"Open floating diagnostics",
 			opt = { silent = true },
 		},
 		["<C-/>"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle linewise" },
 
 		["<TAB>"] = {
-			"<cmd>BufferLineCycleNext<cr>",
-			"goto next buffer",
+			"<Plug>(cokeline-focus-next)",
+			"Goto next buffer",
 		},
 
 		["<S-Tab>"] = {
-			"<cmd>BufferLineCyclePrev<cr>",
-			"goto prev buffer",
+			"<Plug>(cokeline-focus-prev)",
+			"Goto prev buffer",
 		},
 		["<leader>x"] = {
 			function()
 				require("core.utils").buf_kill("bd", bufnr, false)
 			end,
-			"close buffer",
+			"Close buffer",
 		},
 
 		["<leader>ta"] = {
@@ -114,6 +131,7 @@ M.general = {
 
 		["<leader>nf"] = {
 			"<CMD>lua require('neogen').generate()<CR>",
+			"Generate Neogen",
 			opts = { noremap = true, silent = true },
 		},
 
@@ -121,15 +139,16 @@ M.general = {
 			function()
 				require("core.utils").set_banners()
 			end,
+			"Set banners",
 			opts = { silent = true },
 		},
 	},
 
-	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "escape terminal mode" } },
+	t = { ["<C-x>"] = { termcodes("<C-\\><C-N>"), "Escape terminal mode" } },
 
 	v = {
-		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+		["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 		["<C-/>"] = { "<Plug>(comment_toggle_blockwise_visual)", "Comment toggle blockwise" },
 	},
 
@@ -152,12 +171,12 @@ M.lspconfig = {
 			function()
 				vim.lsp.buf.declaration()
 			end,
-			"lsp declaration",
+			"Lsp declaration",
 		},
 
 		["gd"] = {
 			"<cmd>Lspsaga goto_definition<CR>",
-			"lsp definition",
+			"Lsp definition",
 		},
 
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Hover Documentation" },
@@ -166,98 +185,98 @@ M.lspconfig = {
 			function()
 				vim.lsp.buf.implementation()
 			end,
-			"lsp implementation",
+			"Lsp implementation",
 		},
 
 		["<leader>ls"] = {
 			function()
 				vim.lsp.buf.signature_help()
 			end,
-			"lsp signature_help",
+			"Lsp signature_help",
 		},
 
 		["<leader>D"] = {
 			function()
 				vim.lsp.buf.type_definition()
 			end,
-			"lsp definition type",
+			"Lsp definition type",
 		},
 
 		["<leader>ra"] = {
 			function()
 				require("nvchad_ui.renamer").open()
 			end,
-			"lsp rename",
+			"Lsp rename",
 		},
 
 		["<leader>ca"] = {
 			function()
 				vim.lsp.buf.code_action()
 			end,
-			"lsp code_action",
+			"Lsp code_action",
 		},
 
 		["gr"] = {
 			function()
 				vim.lsp.buf.references()
 			end,
-			"lsp references",
+			"Lsp references",
 		},
 
 		["<leader>f"] = {
 			function()
 				vim.diagnostic.open_float()
 			end,
-			"floating diagnostic",
+			"Floating diagnostic",
 		},
 
 		["[d"] = {
 			function()
 				vim.diagnostic.goto_prev()
 			end,
-			"goto prev",
+			"Goto prev",
 		},
 
 		["d]"] = {
 			function()
 				vim.diagnostic.goto_next()
 			end,
-			"goto_next",
+			"Goto_next",
 		},
 
 		["<leader>q"] = {
 			function()
 				vim.diagnostic.setloclist()
 			end,
-			"diagnostic setloclist",
+			"Diagnostic setloclist",
 		},
 
 		["<leader>fm"] = {
 			function()
 				vim.lsp.buf.format({ async = true })
 			end,
-			"lsp formatting",
+			"Lsp formatting",
 		},
 
 		["<leader>wa"] = {
 			function()
 				vim.lsp.buf.add_workspace_folder()
 			end,
-			"add workspace folder",
+			"Add workspace folder",
 		},
 
 		["<leader>wr"] = {
 			function()
 				vim.lsp.buf.remove_workspace_folder()
 			end,
-			"remove workspace folder",
+			"Remove workspace folder",
 		},
 
 		["<leader>wl"] = {
 			function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end,
-			"list workspace folders",
+			"List workspace folders",
 		},
 
 		["<leader>lo"] = {
@@ -272,17 +291,17 @@ M.telescope = {
 
 	n = {
 		-- find
-		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
-		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
-		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
-		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-		["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
+		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+		["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "Show keys" },
 
 		-- git
-		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
-		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
+		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
 		-- theme switcher
 		["<leader>th"] = { "<cmd> ColoTele <CR>", "Change theme" },
@@ -355,5 +374,40 @@ M.gitsigns = {
 		},
 	},
 }
+
+M.flog = {
+	plugin = true,
+
+	n = {
+		["<leader>fl"] = {
+			"<CMD>Flogsplit<CR>",
+			"Toggle flog",
+		},
+	},
+}
+
+M.mini = {
+	plugin = true,
+
+	n = {
+		["<leader>mf"] = {
+			"<CMD>lua MiniFiles.open()<CR>",
+			"Toggle Mini Files",
+		},
+	},
+}
+
+M.norg = {
+	plugin = true,
+
+	n = {
+		["<leader>nn"] = {
+			"<CMD>Neorg keybind norg core.dirman.new.note<CR>",
+			"Create new note",
+		},
+	},
+}
+
+vim.cmd([[imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")]])
 
 return M

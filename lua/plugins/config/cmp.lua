@@ -40,6 +40,7 @@ cmp_window.info = function(self)
 end
 
 local options = {
+	preselect = cmp.PreselectMode.None,
 	window = {
 		completion = {
 			side_padding = 0,
@@ -95,12 +96,7 @@ local options = {
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 			else
-				local copilot_keys = vim.fn["copilot#Accept"]()
-				if copilot_keys ~= "" then
-					vim.api.nvim_feedkeys(copilot_keys, "i", true)
-				else
-					fallback()
-				end
+				fallback()
 			end
 		end, {
 			"i",
@@ -126,6 +122,9 @@ local options = {
 		{ name = "nvim_lsp_document_symbol" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
+		{ name = "emoji" },
+		{ name = "nerdfont" },
+		{ name = "greek" },
 		{ name = "path" },
 	},
 }

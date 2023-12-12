@@ -45,30 +45,22 @@ require("lazy").setup({
 			require("plugins.config.toggleterm")
 		end,
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("plugins.config.blankline")
-		end,
-	},
 	"MunifTanjim/nui.nvim",
 	"nvim-lua/popup.nvim",
 	{
-		"akinsho/bufferline.nvim",
+		"willothy/nvim-cokeline",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for v0.4.0+
+			"kyazdani42/nvim-web-devicons", -- If you want devicons
+		},
 		config = function()
-			require("plugins.config.buffer-line")
+			require("plugins.config.cokeline_conf")
 		end,
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		config = function()
 			require("plugins.config.neo-tree")
-		end,
-	},
-	{
-		"freddiehaddad/feline.nvim",
-		config = function()
-			require("plugins.config.feline_conf")
 		end,
 	},
 	{
@@ -93,12 +85,36 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"dharmx/colo.nvim",
-		dependencies = { "b0o/incline.nvim" },
+		"echasnovski/mini.nvim",
+		version = "*",
 		config = function()
-			require("plugins.config.colo_conf")
+			require("plugins.config.mini_conf")
+			require("core.utils").load_mappings("mini")
 		end,
-		dev = true,
+	},
+	-- Breadcrumb plugin
+	{
+		"Bekaboo/dropbar.nvim",
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
+		config = function()
+			local status_ok, dropbar = pcall(require, "dropbar")
+
+			if not status_ok then
+				return
+			end
+
+			dropbar.setup()
+		end,
+	},
+	{
+		"Wansmer/symbol-usage.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("plugins.config.symbol-usage_conf")
+		end,
 	},
 	-- END: UI
 
@@ -139,6 +155,7 @@ require("lazy").setup({
 	"folke/neodev.nvim",
 	{
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		config = function()
 			require("plugins.config.fidget_conf")
 		end,
@@ -157,6 +174,9 @@ require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-nvim-lua",
+	"hrsh7th/cmp-emoji",
+	"chrisgrieser/cmp-nerdfont",
+	"max397574/cmp-greek",
 	{
 		"L3MON4D3/LuaSnip",
 		config = function()
@@ -228,6 +248,12 @@ require("lazy").setup({
 		end,
 	},
 	{ "github/copilot.vim" },
+	{
+		"rbong/vim-flog",
+		dependencies = {
+			"tpope/vim-fugitive",
+		},
+	},
 	-- END: Dev Plugins
 
 	-- START: Telescope
@@ -267,6 +293,9 @@ require("lazy").setup({
 			require("telescope").load_extension("file_browser")
 		end,
 	},
+	{
+		"danielvolchek/tailiscope.nvim",
+	},
 	-- END: Telescope
 
 	-- START: Utility
@@ -280,16 +309,23 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("plugins.config.chat-gpt")
+			require("plugins.config.neorg_conf")
+			require("core.utils").load_mappings("norg")
 		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
 	},
 	-- END: Utility
+
+	-- START: Colotscheme
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("plugins.config.kanagawa_conf")
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
+	-- END: Colorscheme
 }, opts)

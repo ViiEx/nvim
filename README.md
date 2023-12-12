@@ -1,102 +1,158 @@
-/_ -- My NeoVim Configuration -- _/
+```document.meta
+title: README
+description: Neovim Config README
+authors: vchristopoulos
+categories: NeoVim
+created: 2023-12-12T15:00:47+0200
+updated: 2023-12-12T15:10:11+0200
+version: 1.1.1
+```
 
 # Neovim Config
 
 ## Introduction
 
-This is my personal configuration of `neovim` with the `mappings` I'm more confurtable with
-and the `plugins` I like and use everyday. I'll say it first, this config is not perfect by any means. It needs a lot of fixes \
-and a lot of work but I am pretty happy with how it turned out up till now. I'm working on it almost daily and I change/fix a lot of stuff
-that are either buggy **or** I don't like.
+This is my personal configuration of **_neovim_** with the **mappings**
+I'm more confurtable with and the **plugins** I like and use everyday.
+I'll say it first, this config is not perfect by any means. It needs a
+lot of fixes
+and a lot of work but I am pretty happy with how it turned out up till
+now. I'm working on it almost daily and I change/fix a lot of stuff that
+are either buggy **or** I don't like.
 
-If this config suites your needs feel free to clone it and use it (I have installation instructions down below)
-or if you prefer the current state of it and don't want any sudden changes
-you can fork it and work from there, after that you can check if the commits I push are ok with you and if so you can pull the changes to your
-own branch as well.
+If this config suites your needs feel free to clone it and use it (I
+have installation instructions down below) or if you prefer the current
+state of it and don't want any sudden changes you can fork it and work
+from there, after that you can check if the commits I push are ok with
+you and if so you can pull the changes to your own branch as well.
 
-This configuration aims to be my daily IDE and contains configurations from many different amazing people such us:
+This configuration aims to be my daily IDE and contains configurations
+from many different amazing people such us:
 
-- [The LunarVim project](https://github.com/LunarVim/LunarVim)
-- [The NvChad project and it's extensions](https://github.com/NvChad/NvChad)
-- [KrakeNvim](https://github.com/dharmx/nvim)
-- [Lvim](https://github.com/lvim-tech/lvim)
-- [OctoVim](https://github.com/OctoVim/OctoVim)
+- [The LunarVim Project](https://github.com/LunarVim/LunarVim)
+
+- [The NvChad Project](https://github.com/NvChad/NvChad)
+
+- [The Dharmx Config](https://github.com/dharmx/nvim)
+
+- [The Lvim Project](https://github.com/lvim-tech/lvim)
+
+- [The OctoVim Project](https://github.com/OctoVim/OctoVim)
+
 - And more that I'm probably forgetting.
 
-I'm developing `web` and `mobile` apps daily so my configs are surrounding this part the most.
+I'm developing `web` and `mobile` apps daily so my configs are mostly
+focused on those two areas.
 
-This configuration is always updating with new staff, fixes (it needs a few or many ٩(◕‿◕｡)۶) and features I steal...
-I mean borrowing from other people.
-Do expect a lot of changes as I occasionally look what other people have done to get inspiration (and steal code).
-If you clone this config you may
-find it looking quite different from what the screenshots display below.
+This configuration is always updated with new staff, fixes ٩(◕‿◕｡)۶ and
+features I steal... I mean borrow from other configs. I'm always trying
+to keep it up to date with the latest and greatest plugins and features.
+Do expect some breaking changes from time to time but I'll try to keep
+them to a minimum as I occasionally look what other people have done to
+get inspiration (and steal code). If you clone this config you may find
+it looking quite different from whta the screenshots display below.
 
 ## Installation
 
-Make sure you create a backup of your existing `NeoVim` config in case you already have one.
+Make sure you create a backup of your current config before you proceed
+with the installation.
 
 ```sh
-mv ~/.config/nvim ~/.config/nvim.back
+mv ~/.config/nvim ~/.config/nvim.bak
 ```
 
-Then run the following command.
+Then run the following command to clone the config.
 
 ```sh
 git clone https://github.com/ViiEx/nvim.git ~/.config/nvim
 ```
 
+## Dependencies
+
+This config uses the following dependencies:
+
+- `https://github.com/BurntSushi/ripgrep`(ripgrep)
+
+- `https://github.com/sharkdp/fd` (fd)
+
+- `https://www.nerdfonts.com`(Nerd Fonts)
+
+- `https://www.nodejs.org` (NodeJS) You can install it with `nvm` or
+  `fnm` as well.
+
 ## Features
 
-There are many different banners taken from `KrakeNvim` that can be found at `./lua/core/banners.lua`.
+- Many different banners taken from `KrakenNvim` a.k.a. `Dharmx Config`,
+  and can be found under `./lua/core/banners` folder.
 
-In order to change the banner for Dashboard I have created a small telescope picker that lists and previews
-all the banners. To use it type `<leader>cb` and select the banner you like. After that the next time you
-open NeoVim the new banner will greet you.
+- Neotree file explorer.
 
-I'm using `NeoTree` instaed of the `NvimTree` cause I find it really fancy and of course `ToggleTerm` for the terminals.
+- ToggleTerm for terminal.
 
-Many standar plugins such as `Cmp`, `LspConfig`, `Mason`, `Null-ls`, ~~Lualine~~ `Feline` and `Buffer Line`.
+- CMP for autocompletion.
 
-> Used to have `NvChad_ui` but it is a hustle to make it work properly here so I removed it.
+- LSP for language server.
 
-The config includes by default `hovered diagnostics` cause they are so much more easier to read for me
-so if you don't prefer it that way you can disable it
-by commenting out the `autocmd` in the `./lua/plugins/init.lua` file under the `lspsaga` plugin.
+- LSP Saga for LSP features.
 
-I have telescope with emojis enabled cause I like using them as well.
+- Mason for lsp installations.
 
-Finally I don't use `Which-key` since I remember my keybindings but you can easily install it to help you.
+- Null Ls for formatting and linting.
+
+- Telescope for fuzzy finding.
+
+- Treesitter for syntax highlighting.
+
+- Git signs for git changes.
+
+- Custom statusline.
+
+- Hovered diagnostics.
+
+- CokeLine for bufferline/tabline.
+
+- Fidget for visual lsp indicators.
+
+- Mini.nvim for indentation guides, some animations, file-manager.
+
+- Alpha-nvim for dashboard.
+
+- Aerial.nvim for code outline.
+
+- Todo for todo comments.
+
+- Much more that awaits you to discover.
 
 ### Small guide to use Which-key
 
-First install the plugin
+I don't use `Which-key` since I remember all my mappings but if you want
+to use it you can do the following:
+
+- First install the plugin
 
 ```lua
--- ./lua/plugins/init.lua
-
 {
-  "folke/which-key.nvim",
-  module = "which-key",
-  keys = { "<leader>", '"', "'", "`" },
-  config = function()
-    require("plugins.config.which-key")
-  end,
-  init = function()
-    require("core.utils").load_mappings "whichkey"
-  end,
+    -- ./lua/plugins/init.lua
+    "folke/which-key.nvim",
+    module = "which-key",
+    keys = {"<leader>", '"', "'", "`"},
+    config = function()
+        require("plugins.config.which-key")
+    end,
+    init = function()
+        require("core.utils").load_mappings "whichkey"
+    end,
 }
-
 ```
 
-Create a config file at the following location: `./lua/plugins/config/which-key.lua` \
-and add the following.
+- Create a config file at the following path
+  `./lua/plugins/config/which-key.lua` and add the folliwing.
 
 ```lua
--- The following is taken from NvChad
 local present, wk = pcall(require, "which-key")
 
 if not present then
-  return
+    return
 end
 
 local options = {
@@ -132,45 +188,44 @@ local options = {
 wk.setup(options)
 ```
 
-Add the keymappings to the `./lua/core/mappings.lua` file
+- Add the keybindings to the `./lua/core/mappings.lua` file.
 
 ```lua
 -- Again config taken from NvChad
--- ....
 M.whichkey = {
-  plugin = true,
+    plugin = true,
 
-  n = {
-    ["<leader>wK"] = {
-      function()
-        vim.cmd "WhichKey"
-      end,
-      "which-key all keymaps",
+    n = {
+        ["<leader>wK"] = {
+            function()
+                vim.cmd "WhichKey"
+            end,
+            "which-key all keymaps",
+        },
+        ["<leader>wk"] = {
+            function()
+                local input = vim.fn.input "WhichKey: "
+                vim.cmd("WhichKey " .. input)
+            end,
+            "which-key query lookup",
+        },
     },
-    ["<leader>wk"] = {
-      function()
-        local input = vim.fn.input "WhichKey: "
-        vim.cmd("WhichKey " .. input)
-      end,
-      "which-key query lookup",
-    },
-  },
 }
--- ....
 ```
 
 ## Theme
 
-For theme I use my fork of colo.nvim that you can clone under the `dev`
-forlder for lazy or use it as any normal plugin (`ViiEx/colo.nvim`) but in
-both cases make sure to use the `feature/neotree` branch.
+For theme I use `kanagawa` which is a fork of `tokyonight` and can be
+found at `./lua/plugins/config/kanagawa_conf.lua`.
 
 ## Showcase
 
-![Screenshot_1](./assets/2023-04-20_16-29.png)
-![Screenshot_2](./assets/2023-04-20_16-30.png)
-![Screenshot_3](./assets/2023-04-20_16-31.png)
-![Screenshot_4](./assets/2023-04-20_16-31_1.png)
+![Screenshot_1](./assets/Screenshot_from_2023-12-12_16-24-19.png)
+![Screenshot_2](./assets/Screenshot_from_2023-12-12_16-24-41.png)
+![Screenshot_3](./assets/Screenshot_from_2023-12-12_16-25-45.png)
+![Screenshot_4](./assets/Screenshot_from_2023-12-12_16-26-33.png)
+![Screenshot_5](./assets/Screenshot_from_2023-12-12_16-26-53.png)
+![Screenshot_6](./assets/Screenshot_from_2023-12-12_16-27-32.png)
 
 ## Default (basic) keybindings
 
@@ -206,5 +261,5 @@ both cases make sure to use the `feature/neotree` branch.
 | \<leader\>cb  | Set banner                  | **_n_**  |
 | \<C-x\>       | escape terminal mode        | **_t_**  |
 
-For even more key mappings use `<leader>tk` to open up telescope with
-the list of all keymaps.
+For even more keybindings check the `./lua/core/mappings.lua` file, or
+use Telescope `<leader>tk` to see all the keybindings.
