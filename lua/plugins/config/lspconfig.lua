@@ -4,6 +4,8 @@ if not present then
 	return
 end
 
+require("neodev").setup({})
+
 require("core.lsp")
 
 local M = {}

@@ -109,6 +109,13 @@ require("lazy").setup({
 			dropbar.setup()
 		end,
 	},
+	{
+		"Wansmer/symbol-usage.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("plugins.config.symbol-usage_conf")
+		end,
+	},
 	-- END: UI
 
 	-- START: LSP
